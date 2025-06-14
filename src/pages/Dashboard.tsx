@@ -1,31 +1,21 @@
 
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useGoals } from '@/hooks/useGoals';
-import { GoalCard } from '@/components/GoalCard';
-import { CreateGoalForm } from '@/components/CreateGoalForm';
-import { Analytics } from '@/components/Analytics';
-import { SDLCManager } from '@/components/SDLCManager';
-import { ThemeToggle } from '@/components/ThemeToggle';
-import { Target, TrendingUp, BarChart3, Plus, Search, DollarSign, Calendar, CheckCircle, BarChart, Rocket } from 'lucide-react';
+import { Target, TrendingUp, BarChart3, DollarSign, Calendar, CheckCircle, ArrowRight } from 'lucide-react';
 
 const Dashboard = () => {
-  const { goals, userStats, addGoal, updateGoal, deleteGoal, addTransaction } = useGoals();
-  const [activeMode, setActiveMode] = useState<'personal' | 'work'>('personal');
-  const [activeTab, setActiveTab] = useState<'goals' | 'analytics' | 'sdlc'>('goals');
-  const [showCreateForm, setShowCreateForm] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const { goals, userStats } = useGoals();
 
-  const filteredGoals = goals.filter(goal => 
-    goal.category === activeMode && 
-    goal.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-  const activeGoals = filteredGoals.filter(goal => goal.status === 'active');
-  const completedGoals = filteredGoals.filter(goal => goal.status === 'completed');
+  const activeGoals = goals.filter(goal => goal.status === 'active');
+  const completedGoals = goals.filter(goal => goal.status === 'completed');
+  const personalGoals = goals.filter(goal => goal.category === 'personal');
+  const workGoals = goals.filter(goal => goal.category === 'work');
 
-  const totalProgress = filteredGoals.length > 0 
-    ? filteredGoals.reduce((sum, goal) => sum + (goal.currentAmount / goal.targetAmount * 100), 0) / filteredGoals.length
+  const totalProgress = goals.length > 0 
+    ? goals.reduce((sum, goal) => sum + (goal.currentAmount / goal.targetAmount * 100), 0) / goals.length
     : 0;
 
   const todaysTasks = activeGoals.filter(goal => {
@@ -33,42 +23,18 @@ const Dashboard = () => {
     const today = new Date();
     const diffTime = deadline.getTime() - today.getTime();
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays <= 7; // Tasks due within a week
+    return diffDays <= 7;
   }).length;
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
       <div className="container mx-auto px-6 py-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-2 tracking-tight">
-              Welcome back!
-            </h1>
-            <p className="text-slate-600 dark:text-slate-400 font-medium">Here's what's happening with your goals today.</p>
-          </div>
-          
-          {/* Header Actions */}
-          <div className="flex items-center gap-4">
-            <ThemeToggle />
-            <div className="relative">
-              <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
-              <input
-                type="text"
-                placeholder="Search goals..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 pr-4 py-2 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-slate-900 dark:focus:ring-slate-400 focus:border-transparent bg-white dark:bg-slate-800 font-medium text-slate-900 dark:text-slate-100"
-              />
-            </div>
-            <Button
-              onClick={() => setShowCreateForm(true)}
-              className="bg-slate-900 hover:bg-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600 text-white px-4 py-2 rounded-lg font-medium"
-            >
-              <Plus className="w-4 h-4 mr-2" />
-              Quick Add
-            </Button>
-          </div>
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-2 tracking-tight">
+            Welcome back!
+          </h1>
+          <p className="text-slate-600 dark:text-slate-400 font-medium">Here's an overview of your goals and progress.</p>
         </div>
 
         {/* Key Metrics Row */}
@@ -132,124 +98,124 @@ const Dashboard = () => {
           </Card>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 rounded-xl p-1">
-              <Button
-                onClick={() => setActiveTab('goals')}
-                className={`px-6 py-2 rounded-lg transition-all duration-200 font-medium ${
-                  activeTab === 'goals' 
-                    ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 shadow-sm' 
-                    : 'bg-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-                }`}
-              >
-                <Target className="w-4 h-4 mr-2" />
-                Goals
-              </Button>
-              <Button
-                onClick={() => setActiveTab('analytics')}
-                className={`px-6 py-2 rounded-lg transition-all duration-200 font-medium ${
-                  activeTab === 'analytics' 
-                    ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 shadow-sm' 
-                    : 'bg-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-                }`}
-              >
-                <BarChart className="w-4 h-4 mr-2" />
-                Analytics
-              </Button>
-              <Button
-                onClick={() => setActiveTab('sdlc')}
-                className={`px-6 py-2 rounded-lg transition-all duration-200 font-medium ${
-                  activeTab === 'sdlc' 
-                    ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 shadow-sm' 
-                    : 'bg-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-                }`}
-              >
-                <Rocket className="w-4 h-4 mr-2" />
-                SDLC
-              </Button>
-            </div>
-            
-            {activeTab === 'goals' && (
-              <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 rounded-xl p-1 ml-4">
-                <Button
-                  onClick={() => setActiveMode('personal')}
-                  className={`px-6 py-2 rounded-lg transition-all duration-200 font-medium ${
-                    activeMode === 'personal' 
-                      ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 shadow-sm' 
-                      : 'bg-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-                  }`}
-                >
-                  <Target className="w-4 h-4 mr-2" />
-                  Personal
-                </Button>
-                <Button
-                  onClick={() => setActiveMode('work')}
-                  className={`px-6 py-2 rounded-lg transition-all duration-200 font-medium ${
-                    activeMode === 'work' 
-                      ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 shadow-sm' 
-                      : 'bg-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-                  }`}
-                >
-                  <TrendingUp className="w-4 h-4 mr-2" />
-                  Work
-                </Button>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Create Goal Form */}
-        {showCreateForm && (
-          <div className="mb-8">
-            <CreateGoalForm
-              onCreateGoal={addGoal}
-              onClose={() => setShowCreateForm(false)}
-              mode={activeMode}
-            />
-          </div>
-        )}
-
-        {/* Content Based on Active Tab */}
-        {activeTab === 'analytics' ? (
-          <Analytics goals={goals} />
-        ) : activeTab === 'sdlc' ? (
-          <SDLCManager />
-        ) : (
-          /* Goals Content */
-          filteredGoals.length === 0 ? (
-            <Card className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
-              <CardContent className="p-12 text-center">
-                <Target className="w-16 h-16 text-slate-300 dark:text-slate-600 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2 tracking-tight">
-                  No {activeMode} goals yet
-                </h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-6 font-medium">
-                  Create your first goal to start tracking your progress
+        {/* Quick Actions */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <Link to="/goals">
+            <Card className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg font-semibold text-slate-900 dark:text-slate-100 flex items-center justify-between">
+                  <div className="flex items-center">
+                    <Target className="w-5 h-5 mr-3 text-blue-600 dark:text-blue-400" />
+                    Manage Goals
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-slate-400" />
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                  Create, edit, and track your personal and work goals
                 </p>
-                <Button
-                  onClick={() => setShowCreateForm(true)}
-                  className="bg-slate-900 hover:bg-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600 text-white font-medium"
-                >
-                  <Plus className="w-4 h-4 mr-2" />
-                  Create Goal
-                </Button>
+                <div className="flex justify-between text-sm">
+                  <span className="text-slate-500">Personal: {personalGoals.length}</span>
+                  <span className="text-slate-500">Work: {workGoals.length}</span>
+                </div>
               </CardContent>
             </Card>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredGoals.map((goal) => (
-                <GoalCard
-                  key={goal.id}
-                  goal={goal}
-                  onUpdate={updateGoal}
-                  onAddTransaction={addTransaction}
-                />
-              ))}
-            </div>
-          )
-        )}
+          </Link>
+
+          <Link to="/analytics">
+            <Card className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg font-semibold text-slate-900 dark:text-slate-100 flex items-center justify-between">
+                  <div className="flex items-center">
+                    <BarChart3 className="w-5 h-5 mr-3 text-green-600 dark:text-green-400" />
+                    View Analytics
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-slate-400" />
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                  Analyze your progress with detailed charts and insights
+                </p>
+                <div className="flex justify-between text-sm">
+                  <span className="text-slate-500">Progress: {totalProgress.toFixed(0)}%</span>
+                  <span className="text-slate-500">Active: {activeGoals.length}</span>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+
+          <Link to="/sdlc">
+            <Card className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg font-semibold text-slate-900 dark:text-slate-100 flex items-center justify-between">
+                  <div className="flex items-center">
+                    <TrendingUp className="w-5 h-5 mr-3 text-purple-600 dark:text-purple-400" />
+                    SDLC Management
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-slate-400" />
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                  Manage your software development lifecycle processes
+                </p>
+                <div className="text-sm text-slate-500">
+                  Project workflows & templates
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+        </div>
+
+        {/* Recent Activity */}
+        <Card className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
+          <CardHeader>
+            <CardTitle className="text-lg font-semibold text-slate-900 dark:text-slate-100">
+              Recent Activity
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {goals.length === 0 ? (
+              <div className="text-center py-8">
+                <Target className="w-12 h-12 text-slate-300 dark:text-slate-600 mx-auto mb-4" />
+                <p className="text-slate-600 dark:text-slate-400 mb-4">No goals created yet</p>
+                <Link to="/goals">
+                  <Button className="bg-slate-900 hover:bg-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600 text-white">
+                    Create Your First Goal
+                  </Button>
+                </Link>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {goals.slice(0, 3).map((goal) => (
+                  <div key={goal.id} className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-700 rounded-lg">
+                    <div>
+                      <h4 className="font-medium text-slate-900 dark:text-slate-100">{goal.title}</h4>
+                      <p className="text-sm text-slate-600 dark:text-slate-400">{goal.category} goal</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-sm font-medium text-slate-900 dark:text-slate-100">
+                        ${goal.currentAmount.toLocaleString()} / ${goal.targetAmount.toLocaleString()}
+                      </p>
+                      <p className="text-xs text-slate-600 dark:text-slate-400">
+                        {((goal.currentAmount / goal.targetAmount) * 100).toFixed(0)}% complete
+                      </p>
+                    </div>
+                  </div>
+                ))}
+                {goals.length > 3 && (
+                  <Link to="/goals">
+                    <Button variant="ghost" className="w-full text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">
+                      View All Goals <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
+                )}
+              </div>
+            )}
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

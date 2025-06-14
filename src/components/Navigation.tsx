@@ -3,7 +3,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { Target, BarChart, Rocket, Home } from 'lucide-react';
+import { Target, BarChart, Rocket, Home, Calendar } from 'lucide-react';
 
 const Navigation = () => {
   const location = useLocation();
@@ -59,6 +59,20 @@ const Navigation = () => {
                 >
                   <BarChart className="w-4 h-4 mr-2" />
                   Analytics
+                </Button>
+              </Link>
+              
+              <Link to="/calendar">
+                <Button
+                  variant="ghost"
+                  className={`${
+                    isActive('/calendar') 
+                      ? 'bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-100' 
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                  }`}
+                >
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Calendar
                 </Button>
               </Link>
               

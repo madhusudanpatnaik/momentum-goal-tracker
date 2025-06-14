@@ -44,74 +44,74 @@ export const CreateGoalForm: React.FC<CreateGoalFormProps> = ({ onCreateGoal, on
   };
 
   return (
-    <Card className="bg-white/10 backdrop-blur-xl border border-white/20">
-      <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle className="text-white">
+    <Card className="bg-white border border-slate-200 shadow-lg">
+      <CardHeader className="flex flex-row items-center justify-between border-b border-slate-100">
+        <CardTitle className="text-slate-900 font-semibold tracking-tight">
           Create New {mode === 'personal' ? 'Personal' : 'Work'} Goal
         </CardTitle>
         <Button
           onClick={onClose}
           size="sm"
           variant="outline"
-          className="border-white/20 text-purple-200"
+          className="border-slate-200 text-slate-600 hover:bg-slate-50"
         >
           <X className="w-4 h-4" />
         </Button>
       </CardHeader>
       
-      <CardContent>
+      <CardContent className="p-6">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-purple-200 text-sm mb-2">Goal Title</label>
+            <label className="block text-slate-700 text-sm font-medium mb-2">Goal Title</label>
             <input
               type="text"
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
               placeholder={mode === 'personal' ? 'Buy a new bike' : 'Launch MVP'}
-              className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-200/50"
+              className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-slate-900 focus:border-transparent font-medium"
               required
             />
           </div>
 
           <div>
-            <label className="block text-purple-200 text-sm mb-2">Description</label>
+            <label className="block text-slate-700 text-sm font-medium mb-2">Description</label>
             <textarea
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               placeholder="Describe your goal..."
-              className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-200/50 h-20 resize-none"
+              className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 h-20 resize-none focus:ring-2 focus:ring-slate-900 focus:border-transparent font-medium"
             />
           </div>
 
           <div>
-            <label className="block text-purple-200 text-sm mb-2">Target Amount</label>
+            <label className="block text-slate-700 text-sm font-medium mb-2">Target Amount</label>
             <input
               type="number"
               value={formData.targetAmount}
               onChange={(e) => setFormData({ ...formData, targetAmount: e.target.value })}
               placeholder="1000"
-              className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-200/50"
+              className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-slate-900 focus:border-transparent font-medium"
               required
             />
           </div>
 
           <div>
-            <label className="block text-purple-200 text-sm mb-2">Deadline</label>
+            <label className="block text-slate-700 text-sm font-medium mb-2">Deadline</label>
             <input
               type="date"
               value={formData.deadline}
               onChange={(e) => setFormData({ ...formData, deadline: e.target.value })}
-              className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white"
+              className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-900 focus:ring-2 focus:ring-slate-900 focus:border-transparent font-medium"
               required
             />
           </div>
 
           <div>
-            <label className="block text-purple-200 text-sm mb-2">Type</label>
+            <label className="block text-slate-700 text-sm font-medium mb-2">Type</label>
             <select
               value={formData.type}
               onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-              className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white"
+              className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-900 focus:ring-2 focus:ring-slate-900 focus:border-transparent font-medium"
             >
               {mode === 'personal' ? (
                 <option value="savings">Savings</option>
@@ -128,7 +128,7 @@ export const CreateGoalForm: React.FC<CreateGoalFormProps> = ({ onCreateGoal, on
           <div className="flex gap-3 pt-4">
             <Button
               type="submit"
-              className="bg-gradient-to-r from-purple-500/80 to-purple-600/80 hover:from-purple-400/90 hover:to-purple-500/90 text-white"
+              className="bg-slate-900 hover:bg-slate-800 text-white font-medium"
             >
               Create Goal
             </Button>
@@ -136,7 +136,7 @@ export const CreateGoalForm: React.FC<CreateGoalFormProps> = ({ onCreateGoal, on
               type="button"
               onClick={onClose}
               variant="outline"
-              className="border-white/20 text-purple-200"
+              className="border-slate-200 text-slate-600 hover:bg-slate-50 font-medium"
             >
               Cancel
             </Button>

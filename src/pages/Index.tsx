@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -140,75 +139,83 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 relative overflow-hidden">
-      {/* Retro Grid Background */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(rgba(0,255,255,0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,255,255,0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '40px 40px'
-        }} />
-      </div>
-
-      {/* Floating Particles */}
+    <div className="min-h-screen relative overflow-hidden" style={{
+      background: 'radial-gradient(ellipse at center, #4c1d95 0%, #312e81 25%, #1e1b4b 50%, #0f172a 100%)'
+    }}>
+      {/* Premium Starfield Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(100)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-2 h-2 bg-cyan-400 opacity-60 animate-pulse"
+            className="absolute rounded-full bg-white opacity-70 animate-pulse"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 3 + 1}px`,
+              height: `${Math.random() * 3 + 1}px`,
               animationDelay: `${Math.random() * 3}s`,
-              boxShadow: '0 0 10px currentColor'
+              animationDuration: `${Math.random() * 2 + 2}s`,
+              boxShadow: '0 0 6px rgba(255,255,255,0.8)'
             }}
           />
         ))}
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-6xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 font-mono tracking-wider">
-            RETRO GOALS
+      {/* Elegant Grid Overlay */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px'
+        }} />
+      </div>
+
+      <div className="relative z-10 container mx-auto px-6 py-12">
+        {/* Premium Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-7xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-white to-purple-200 tracking-wide">
+            PREMIUM GOALS
           </h1>
-          <div className="flex items-center justify-center gap-2 text-cyan-300 text-xl">
-            <Star className="w-6 h-6 animate-pulse" />
-            <span className="font-mono">TRACK • SAVE • ACHIEVE</span>
-            <Star className="w-6 h-6 animate-pulse" />
+          <p className="text-xl text-purple-200/80 max-w-2xl mx-auto leading-relaxed">
+            Elevate your savings journey with intelligent goal tracking and premium insights
+          </p>
+          <div className="flex items-center justify-center gap-3 mt-6">
+            <Star className="w-5 h-5 text-purple-300 animate-pulse" />
+            <span className="text-purple-300/90 text-sm tracking-wider">LUXURY • PRECISION • SUCCESS</span>
+            <Star className="w-5 h-5 text-purple-300 animate-pulse" />
           </div>
         </div>
 
         <Tabs defaultValue="dashboard" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-8 bg-black/50 border border-cyan-400/30">
-            <TabsTrigger value="dashboard" className="data-[state=active]:bg-cyan-400 data-[state=active]:text-black font-mono">
+          <TabsList className="grid w-full grid-cols-3 mb-12 bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl">
+            <TabsTrigger value="dashboard" className="data-[state=active]:bg-white/20 data-[state=active]:text-white text-purple-200 transition-all duration-300 rounded-lg">
               <Target className="w-4 h-4 mr-2" />
-              DASHBOARD
+              Dashboard
             </TabsTrigger>
-            <TabsTrigger value="investments" className="data-[state=active]:bg-purple-400 data-[state=active]:text-black font-mono">
+            <TabsTrigger value="investments" className="data-[state=active]:bg-white/20 data-[state=active]:text-white text-purple-200 transition-all duration-300 rounded-lg">
               <TrendingUp className="w-4 h-4 mr-2" />
-              INVESTMENTS
+              Investments
             </TabsTrigger>
-            <TabsTrigger value="analytics" className="data-[state=active]:bg-pink-400 data-[state=active]:text-black font-mono">
+            <TabsTrigger value="analytics" className="data-[state=active]:bg-white/20 data-[state=active]:text-white text-purple-200 transition-all duration-300 rounded-lg">
               <Calendar className="w-4 h-4 mr-2" />
-              ANALYTICS
+              Analytics
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="dashboard">
-            {/* Filter Bar */}
-            <div className="flex flex-wrap gap-2 mb-8 justify-center">
+            {/* Premium Filter Bar */}
+            <div className="flex flex-wrap gap-3 mb-12 justify-center">
               {categories.map(category => (
                 <Button
                   key={category}
                   variant={filter === category ? "default" : "outline"}
                   onClick={() => setFilter(category)}
-                  className={`font-mono uppercase border-2 ${
+                  className={`capitalize border-0 backdrop-blur-xl transition-all duration-300 ${
                     filter === category 
-                      ? 'bg-cyan-400 text-black border-cyan-400 shadow-lg shadow-cyan-400/50' 
-                      : 'border-cyan-400/50 text-cyan-400 hover:bg-cyan-400/20'
+                      ? 'bg-white/20 text-white shadow-lg shadow-white/10' 
+                      : 'bg-white/5 text-purple-200 hover:bg-white/10 hover:text-white'
                   }`}
                 >
                   {category !== 'all' && categoryEmojis[category as keyof typeof categoryEmojis]} {category}
@@ -216,148 +223,147 @@ const Index = () => {
               ))}
             </div>
 
-            {/* Add Goal Button */}
-            <div className="flex justify-center mb-8">
+            {/* Premium Add Goal Button */}
+            <div className="flex justify-center mb-12">
               <Button
                 onClick={() => setShowAddGoal(!showAddGoal)}
-                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 border-2 border-purple-400 text-white font-mono text-lg px-8 py-3 shadow-lg shadow-purple-500/50"
+                className="bg-gradient-to-r from-purple-500/80 to-purple-600/80 hover:from-purple-400/90 hover:to-purple-500/90 backdrop-blur-xl border border-white/20 text-white px-10 py-4 text-lg rounded-xl shadow-2xl transition-all duration-300 hover:scale-105"
               >
                 <Plus className="w-5 h-5 mr-2" />
-                NEW GOAL
+                Create New Goal
               </Button>
             </div>
 
-            {/* Add Goal Form */}
+            {/* Premium Add Goal Form */}
             {showAddGoal && (
-              <Card className="mb-8 bg-black/60 border-2 border-cyan-400/50 shadow-xl shadow-cyan-400/20">
-                <CardHeader>
-                  <CardTitle className="text-cyan-400 font-mono">CREATE NEW GOAL</CardTitle>
+              <Card className="mb-12 bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl rounded-2xl">
+                <CardHeader className="pb-6">
+                  <CardTitle className="text-white text-2xl">Create Premium Goal</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <CardContent className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <Label className="text-cyan-300 font-mono">GOAL NAME</Label>
+                      <Label className="text-purple-200 text-sm font-medium">Goal Name</Label>
                       <Input
                         value={newGoal.name}
                         onChange={(e) => setNewGoal({...newGoal, name: e.target.value})}
-                        className="bg-black/50 border-cyan-400/50 text-white font-mono"
-                        placeholder="e.g., Mountain Bike"
+                        className="bg-white/10 backdrop-blur-xl border-white/20 text-white placeholder:text-white/50 rounded-lg mt-2"
+                        placeholder="e.g., Premium Mountain Bike"
                       />
                     </div>
                     <div>
-                      <Label className="text-cyan-300 font-mono">TARGET AMOUNT ($)</Label>
+                      <Label className="text-purple-200 text-sm font-medium">Target Amount ($)</Label>
                       <Input
                         type="number"
                         value={newGoal.targetAmount}
                         onChange={(e) => setNewGoal({...newGoal, targetAmount: e.target.value})}
-                        className="bg-black/50 border-cyan-400/50 text-white font-mono"
+                        className="bg-white/10 backdrop-blur-xl border-white/20 text-white placeholder:text-white/50 rounded-lg mt-2"
                         placeholder="1200"
                       />
                     </div>
                     <div>
-                      <Label className="text-cyan-300 font-mono">CURRENT SAVINGS ($)</Label>
+                      <Label className="text-purple-200 text-sm font-medium">Current Savings ($)</Label>
                       <Input
                         type="number"
                         value={newGoal.savedAmount}
                         onChange={(e) => setNewGoal({...newGoal, savedAmount: e.target.value})}
-                        className="bg-black/50 border-cyan-400/50 text-white font-mono"
+                        className="bg-white/10 backdrop-blur-xl border-white/20 text-white placeholder:text-white/50 rounded-lg mt-2"
                         placeholder="0"
                       />
                     </div>
                     <div>
-                      <Label className="text-cyan-300 font-mono">MONTHLY INVESTMENT ($)</Label>
+                      <Label className="text-purple-200 text-sm font-medium">Monthly Investment ($)</Label>
                       <Input
                         type="number"
                         value={newGoal.monthlyInvestment}
                         onChange={(e) => setNewGoal({...newGoal, monthlyInvestment: e.target.value})}
-                        className="bg-black/50 border-cyan-400/50 text-white font-mono"
+                        className="bg-white/10 backdrop-blur-xl border-white/20 text-white placeholder:text-white/50 rounded-lg mt-2"
                         placeholder="150"
                       />
                     </div>
                   </div>
-                  <div className="flex gap-4 justify-end">
+                  <div className="flex gap-4 justify-end pt-4">
                     <Button
                       variant="outline"
                       onClick={() => setShowAddGoal(false)}
-                      className="border-red-400 text-red-400 hover:bg-red-400/20 font-mono"
+                      className="border-white/20 text-purple-200 hover:bg-white/10 hover:text-white backdrop-blur-xl"
                     >
-                      CANCEL
+                      Cancel
                     </Button>
                     <Button
                       onClick={addGoal}
-                      className="bg-green-500 hover:bg-green-600 border-2 border-green-400 font-mono shadow-lg shadow-green-500/50"
+                      className="bg-gradient-to-r from-emerald-500/80 to-emerald-600/80 hover:from-emerald-400/90 hover:to-emerald-500/90 backdrop-blur-xl border border-white/20 text-white shadow-lg"
                     >
-                      CREATE GOAL
+                      Create Goal
                     </Button>
                   </div>
                 </CardContent>
               </Card>
             )}
 
-            {/* Goals Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Premium Goals Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredGoals.map((goal) => {
                 const progress = getProgressPercentage(goal.savedAmount, goal.targetAmount);
                 const isCompleted = progress >= 100;
                 
                 return (
-                  <Card key={goal.id} className={`bg-black/60 border-2 shadow-xl transition-all duration-300 hover:scale-105 ${
-                    isCompleted 
-                      ? 'border-green-400 shadow-green-400/30' 
-                      : 'border-purple-400/50 shadow-purple-400/20'
+                  <Card key={goal.id} className={`bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl transition-all duration-500 hover:scale-105 hover:bg-white/15 rounded-2xl ${
+                    isCompleted ? 'ring-2 ring-emerald-400/50' : ''
                   }`}>
-                    <CardHeader className="pb-2">
+                    <CardHeader className="pb-4">
                       <div className="flex items-center justify-between">
-                        <CardTitle className="text-cyan-400 font-mono text-lg">
-                          {categoryEmojis[goal.category as keyof typeof categoryEmojis]} {goal.name}
+                        <CardTitle className="text-white text-xl flex items-center gap-2">
+                          <span className="text-2xl">{categoryEmojis[goal.category as keyof typeof categoryEmojis]}</span>
+                          {goal.name}
                         </CardTitle>
                         {isCompleted && <Trophy className="w-6 h-6 text-yellow-400 animate-pulse" />}
                       </div>
-                      <Badge variant="outline" className="w-fit border-purple-400 text-purple-400 font-mono">
+                      <Badge variant="outline" className="w-fit border-white/30 text-purple-200 bg-white/10 backdrop-blur-xl">
                         {goal.category.toUpperCase()}
                       </Badge>
                     </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="space-y-2">
+                    <CardContent className="space-y-6">
+                      <div className="space-y-3">
                         <div className="flex justify-between text-sm">
-                          <span className="text-cyan-300 font-mono">PROGRESS</span>
-                          <span className="text-white font-mono">{progress.toFixed(1)}%</span>
+                          <span className="text-purple-200 font-medium">Progress</span>
+                          <span className="text-white font-semibold">{progress.toFixed(1)}%</span>
                         </div>
                         <Progress 
                           value={progress} 
-                          className={`h-3 bg-gray-800 ${
-                            isCompleted ? '[&>div]:bg-green-400' : '[&>div]:bg-gradient-to-r [&>div]:from-cyan-400 [&>div]:to-purple-400'
+                          className={`h-4 bg-white/10 rounded-full ${
+                            isCompleted ? '[&>div]:bg-gradient-to-r [&>div]:from-emerald-400 [&>div]:to-emerald-500' : '[&>div]:bg-gradient-to-r [&>div]:from-purple-400 [&>div]:to-purple-500'
                           }`}
                         />
-                        <div className="flex justify-between text-sm font-mono">
-                          <span className="text-green-400">${goal.savedAmount.toLocaleString()}</span>
-                          <span className="text-white">${goal.targetAmount.toLocaleString()}</span>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-emerald-300 font-semibold">${goal.savedAmount.toLocaleString()}</span>
+                          <span className="text-white font-semibold">${goal.targetAmount.toLocaleString()}</span>
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-4 text-center">
-                        <div className="bg-black/40 rounded p-2 border border-cyan-400/30">
-                          <div className="text-cyan-400 text-xs font-mono">REMAINING</div>
-                          <div className="text-white font-mono">${(goal.targetAmount - goal.savedAmount).toLocaleString()}</div>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="bg-white/10 backdrop-blur-xl rounded-xl p-4 border border-white/10">
+                          <div className="text-purple-200 text-xs font-medium mb-1">Remaining</div>
+                          <div className="text-white font-bold text-lg">${(goal.targetAmount - goal.savedAmount).toLocaleString()}</div>
                         </div>
-                        <div className="bg-black/40 rounded p-2 border border-purple-400/30">
-                          <div className="text-purple-400 text-xs font-mono">TIME LEFT</div>
-                          <div className="text-white font-mono text-xs">{getTimeToGoal(goal.savedAmount, goal.targetAmount, goal.monthlyInvestment)}</div>
+                        <div className="bg-white/10 backdrop-blur-xl rounded-xl p-4 border border-white/10">
+                          <div className="text-purple-200 text-xs font-medium mb-1">Time Left</div>
+                          <div className="text-white font-bold text-sm">{getTimeToGoal(goal.savedAmount, goal.targetAmount, goal.monthlyInvestment)}</div>
                         </div>
                       </div>
 
-                      <div className="flex gap-2">
+                      <div className="flex gap-3 pt-2">
                         <Button
                           onClick={() => updateSavings(goal.id, 50)}
-                          className="flex-1 bg-green-600 hover:bg-green-700 font-mono text-xs"
+                          className="flex-1 bg-emerald-500/80 hover:bg-emerald-400/90 text-white backdrop-blur-xl border border-white/20 rounded-lg transition-all duration-300"
                         >
                           +$50
                         </Button>
                         <Button
                           onClick={() => updateSavings(goal.id, goal.monthlyInvestment)}
-                          className="flex-1 bg-blue-600 hover:bg-blue-700 font-mono text-xs"
+                          className="flex-1 bg-purple-500/80 hover:bg-purple-400/90 text-white backdrop-blur-xl border border-white/20 rounded-lg transition-all duration-300"
                         >
-                          +MONTHLY
+                          +Monthly
                         </Button>
                       </div>
                     </CardContent>
@@ -368,27 +374,27 @@ const Index = () => {
           </TabsContent>
 
           <TabsContent value="investments">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {goals.map((goal) => (
-                <Card key={goal.id} className="bg-black/60 border-2 border-purple-400/50 shadow-xl shadow-purple-400/20">
+                <Card key={goal.id} className="bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl rounded-2xl hover:bg-white/15 transition-all duration-300">
                   <CardHeader>
-                    <CardTitle className="text-purple-400 font-mono flex items-center gap-2">
-                      <Coins className="w-5 h-5" />
+                    <CardTitle className="text-white flex items-center gap-3">
+                      <Coins className="w-6 h-6 text-purple-300" />
                       {goal.name}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4 text-center">
-                      <div className="bg-black/40 rounded p-3 border border-purple-400/30">
-                        <div className="text-purple-400 text-xs font-mono">MONTHLY</div>
-                        <div className="text-white font-mono text-lg">${goal.monthlyInvestment}</div>
+                  <CardContent className="space-y-6">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-white/10 backdrop-blur-xl rounded-xl p-4 border border-white/10 text-center">
+                        <div className="text-purple-200 text-xs font-medium mb-2">Monthly</div>
+                        <div className="text-white font-bold text-2xl">${goal.monthlyInvestment}</div>
                       </div>
-                      <div className="bg-black/40 rounded p-3 border border-cyan-400/30">
-                        <div className="text-cyan-400 text-xs font-mono">TOTAL SAVED</div>
-                        <div className="text-white font-mono text-lg">${goal.savedAmount}</div>
+                      <div className="bg-white/10 backdrop-blur-xl rounded-xl p-4 border border-white/10 text-center">
+                        <div className="text-purple-200 text-xs font-medium mb-2">Total Saved</div>
+                        <div className="text-white font-bold text-2xl">${goal.savedAmount}</div>
                       </div>
                     </div>
-                    <div className="text-center text-sm text-gray-400 font-mono">
+                    <div className="text-center text-sm text-purple-200/70">
                       Started: {new Date(goal.createdAt).toLocaleDateString()}
                     </div>
                   </CardContent>
@@ -398,37 +404,37 @@ const Index = () => {
           </TabsContent>
 
           <TabsContent value="analytics">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card className="bg-black/60 border-2 border-pink-400/50 shadow-xl shadow-pink-400/20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <Card className="bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl rounded-2xl">
                 <CardHeader>
-                  <CardTitle className="text-pink-400 font-mono">TOTAL OVERVIEW</CardTitle>
+                  <CardTitle className="text-white text-xl">Portfolio Overview</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
+                <CardContent className="space-y-6">
+                  <div className="grid grid-cols-2 gap-6">
                     <div className="text-center">
-                      <div className="text-2xl font-mono text-cyan-400">{goals.length}</div>
-                      <div className="text-sm text-gray-400 font-mono">ACTIVE GOALS</div>
+                      <div className="text-3xl font-bold text-white mb-2">{goals.length}</div>
+                      <div className="text-purple-200/70 text-sm">Active Goals</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-mono text-green-400">
+                      <div className="text-3xl font-bold text-emerald-300 mb-2">
                         ${goals.reduce((sum, goal) => sum + goal.savedAmount, 0).toLocaleString()}
                       </div>
-                      <div className="text-sm text-gray-400 font-mono">TOTAL SAVED</div>
+                      <div className="text-purple-200/70 text-sm">Total Saved</div>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="bg-black/60 border-2 border-yellow-400/50 shadow-xl shadow-yellow-400/20">
+              <Card className="bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl rounded-2xl">
                 <CardHeader>
-                  <CardTitle className="text-yellow-400 font-mono">MONTHLY COMMITMENT</CardTitle>
+                  <CardTitle className="text-white text-xl">Monthly Commitment</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-6">
                   <div className="text-center">
-                    <div className="text-3xl font-mono text-yellow-400">
+                    <div className="text-4xl font-bold text-purple-300 mb-2">
                       ${goals.reduce((sum, goal) => sum + goal.monthlyInvestment, 0)}
                     </div>
-                    <div className="text-sm text-gray-400 font-mono">PER MONTH</div>
+                    <div className="text-purple-200/70 text-sm">Per Month</div>
                   </div>
                 </CardContent>
               </Card>

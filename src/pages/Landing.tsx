@@ -168,17 +168,10 @@ const Landing = () => {
             </h2>
           </div>
 
-          <p className="text-gray-700 text-xl md:text-2xl max-w-2xl mx-auto mb-8 leading-relaxed font-semibold">
+          <p className="text-gray-700 text-xl md:text-2xl max-w-2xl mx-auto mb-12 leading-relaxed font-semibold">
             Momentum brings clarity and focus to your goals with elegant dashboards, 
             project tracking, and data-driven insights that keep you moving forward.
           </p>
-
-          {/* New inspiring quote */}
-          <div className="mb-12 py-8 px-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-gray-200/50 max-w-3xl mx-auto">
-            <p className="text-2xl md:text-3xl font-bold text-gray-900 leading-relaxed italic">
-              "Built for action, built for success. For founders, entrepreneurs, and anyone ready to turn their biggest dreams into reality."
-            </p>
-          </div>
 
           <Button
             onClick={handleGetStarted}

@@ -99,30 +99,6 @@ const Landing = () => {
         }} />
       </div>
 
-      {/* Navigation with enhanced contrast */}
-      <nav className="relative z-10 flex items-center justify-between px-8 py-6 bg-white/80 backdrop-blur-sm border-b border-gray-200/50">
-        <div className="text-3xl font-black text-gray-900 tracking-tight">
-          MOMENTUM
-        </div>
-        <div className="hidden md:flex items-center gap-8">
-          <span className="text-gray-700 hover:text-gray-900 cursor-pointer transition-colors font-semibold">Features</span>
-          <span className="text-gray-700 hover:text-gray-900 cursor-pointer transition-colors font-semibold">Pricing</span>
-          <span className="text-gray-700 hover:text-gray-900 cursor-pointer transition-colors font-semibold">Community</span>
-          <Button
-            variant="outline"
-            className="border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold border-2"
-          >
-            Sign in
-          </Button>
-          <Button
-            onClick={handleBookDemo}
-            className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-2 rounded-lg font-semibold shadow-lg"
-          >
-            Book a demo
-          </Button>
-        </div>
-      </nav>
-
       {/* Hero Section with enhanced typography */}
       <div className="relative z-10 container mx-auto px-8 py-20 text-center">
         <div className="max-w-4xl mx-auto">

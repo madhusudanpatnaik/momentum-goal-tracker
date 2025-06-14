@@ -6,13 +6,14 @@ import { useGoals } from '@/hooks/useGoals';
 import { GoalCard } from '@/components/GoalCard';
 import { CreateGoalForm } from '@/components/CreateGoalForm';
 import { Analytics } from '@/components/Analytics';
+import { SDLCManager } from '@/components/SDLCManager';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { Target, TrendingUp, BarChart3, Plus, Search, DollarSign, Calendar, CheckCircle, BarChart } from 'lucide-react';
+import { Target, TrendingUp, BarChart3, Plus, Search, DollarSign, Calendar, CheckCircle, BarChart, Rocket } from 'lucide-react';
 
 const Dashboard = () => {
   const { goals, userStats, addGoal, updateGoal, deleteGoal, addTransaction } = useGoals();
   const [activeMode, setActiveMode] = useState<'personal' | 'work'>('personal');
-  const [activeTab, setActiveTab] = useState<'goals' | 'analytics'>('goals');
+  const [activeTab, setActiveTab] = useState<'goals' | 'analytics' | 'sdlc'>('goals');
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -157,6 +158,17 @@ const Dashboard = () => {
                 <BarChart className="w-4 h-4 mr-2" />
                 Analytics
               </Button>
+              <Button
+                onClick={() => setActiveTab('sdlc')}
+                className={`px-6 py-2 rounded-lg transition-all duration-200 font-medium ${
+                  activeTab === 'sdlc' 
+                    ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 shadow-sm' 
+                    : 'bg-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                }`}
+              >
+                <Rocket className="w-4 h-4 mr-2" />
+                SDLC
+              </Button>
             </div>
             
             {activeTab === 'goals' && (
@@ -202,6 +214,8 @@ const Dashboard = () => {
         {/* Content Based on Active Tab */}
         {activeTab === 'analytics' ? (
           <Analytics goals={goals} />
+        ) : activeTab === 'sdlc' ? (
+          <SDLCManager />
         ) : (
           /* Goals Content */
           filteredGoals.length === 0 ? (

@@ -9,8 +9,16 @@ import RecentGoals from '@/components/dashboard/RecentGoals';
 const Dashboard = () => {
   const { goals, userStats } = useGoals();
   
-  // Add null checks and default values
-  const safeUserStats = userStats || { totalSaved: 0 };
+  // Add null checks and default values with complete UserStats interface
+  const safeUserStats = userStats || { 
+    totalGoals: 0,
+    completedGoals: 0,
+    totalSaved: 0,
+    currentStreak: 0,
+    xp: 0,
+    level: 1,
+    badges: []
+  };
   const safeGoals = goals || [];
   
   const activeGoals = safeGoals.filter(goal => goal.status === 'active');

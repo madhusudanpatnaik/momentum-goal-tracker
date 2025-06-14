@@ -20,16 +20,25 @@ import {
 const Dashboard = () => {
   const { goals, userStats } = useGoals();
   
-  const activeGoals = goals.filter(goal => goal.status === 'active');
-  const completedGoals = goals.filter(goal => goal.status === 'completed');
-  const personalGoals = goals.filter(goal => goal.category === 'personal');
-  const workGoals = goals.filter(goal => goal.category === 'work');
+  // Add null checks and default values
+  const safeUserStats = userStats || { totalSaved: 0 };
+  const safeGoals = goals || [];
+  
+  const activeGoals = safeGoals.filter(goal => goal.status === 'active');
+  const completedGoals = safeGoals.filter(goal => goal.status === 'completed');
+  const personalGoals = safeGoals.filter(goal => goal.category === 'personal');
+  const workGoals = safeGoals.filter(goal => goal.category === 'work');
 
-  const totalProgress = goals.length > 0 
-    ? goals.reduce((sum, goal) => sum + (goal.currentAmount / goal.targetAmount * 100), 0) / goals.length
+  const totalProgress = safeGoals.length > 0 
+    ? safeGoals.reduce((sum, goal) => {
+        const current = goal.currentAmount || 0;
+        const target = goal.targetAmount || 1;
+        return sum + (current / target * 100);
+      }, 0) / safeGoals.length
     : 0;
 
   const todaysTasks = activeGoals.filter(goal => {
+    if (!goal.deadline) return false;
     const deadline = new Date(goal.deadline);
     const today = new Date();
     const diffTime = deadline.getTime() - today.getTime();
@@ -61,7 +70,7 @@ const Dashboard = () => {
                 <div>
                   <p className="text-slate-600 dark:text-slate-400 text-sm font-medium mb-1">Total Saved</p>
                   <p className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-                    ${userStats.totalSaved.toLocaleString()}
+                    ${(safeUserStats.totalSaved || 0).toLocaleString()}
                   </p>
                 </div>
                 <div className="p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
@@ -225,7 +234,7 @@ const Dashboard = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {goals.length === 0 ? (
+            {safeGoals.length === 0 ? (
               <div className="text-center py-8">
                 <Target className="w-12 h-12 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
                 <h3 className="font-medium text-slate-900 dark:text-slate-100 mb-2">No goals yet</h3>
@@ -241,17 +250,17 @@ const Dashboard = () => {
               </div>
             ) : (
               <div className="space-y-3">
-                {goals.slice(0, 3).map((goal) => (
+                {safeGoals.slice(0, 3).map((goal) => (
                   <div key={goal.id} className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-700 rounded-lg">
                     <div>
                       <h4 className="font-medium text-slate-900 dark:text-slate-100">{goal.title}</h4>
                       <p className="text-sm text-slate-600 dark:text-slate-400">
-                        ${goal.currentAmount.toLocaleString()} / ${goal.targetAmount.toLocaleString()}
+                        ${(goal.currentAmount || 0).toLocaleString()} / ${(goal.targetAmount || 0).toLocaleString()}
                       </p>
                     </div>
                     <div className="text-right">
                       <div className="text-sm font-medium text-slate-900 dark:text-slate-100">
-                        {((goal.currentAmount / goal.targetAmount) * 100).toFixed(0)}%
+                        {(((goal.currentAmount || 0) / (goal.targetAmount || 1)) * 100).toFixed(0)}%
                       </div>
                       <div className="text-xs text-slate-500 dark:text-slate-400 capitalize">
                         {goal.category}
@@ -259,10 +268,10 @@ const Dashboard = () => {
                     </div>
                   </div>
                 ))}
-                {goals.length > 3 && (
+                {safeGoals.length > 3 && (
                   <Button asChild variant="outline" className="w-full">
                     <Link to="/goals">
-                      View All Goals ({goals.length})
+                      View All Goals ({safeGoals.length})
                     </Link>
                   </Button>
                 )}

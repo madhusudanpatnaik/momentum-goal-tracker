@@ -17,12 +17,83 @@ const Landing = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-100">
-      {/* Subtle geometric pattern */}
+      {/* Web-like background pattern */}
+      <div className="absolute inset-0 opacity-30">
+        <svg
+          className="absolute inset-0 w-full h-full"
+          viewBox="0 0 1400 800"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Flowing lines */}
+          <path
+            d="M50 200C150 150, 250 250, 350 200C450 150, 550 300, 650 250C750 200, 850 350, 950 300C1050 250, 1150 400, 1250 350"
+            stroke="url(#gradient1)"
+            strokeWidth="2"
+            fill="none"
+            opacity="0.6"
+          />
+          <path
+            d="M100 400C200 350, 300 450, 400 400C500 350, 600 500, 700 450C800 400, 900 550, 1000 500C1100 450, 1200 600, 1300 550"
+            stroke="url(#gradient2)"
+            strokeWidth="2"
+            fill="none"
+            opacity="0.5"
+          />
+          <path
+            d="M0 300C100 250, 200 350, 300 300C400 250, 500 400, 600 350C700 300, 800 450, 900 400C1000 350, 1100 500, 1200 450"
+            stroke="url(#gradient3)"
+            strokeWidth="1.5"
+            fill="none"
+            opacity="0.4"
+          />
+          
+          {/* Connected nodes */}
+          <circle cx="150" cy="180" r="8" fill="url(#nodeGradient)" opacity="0.7" />
+          <circle cx="350" cy="200" r="6" fill="url(#nodeGradient)" opacity="0.6" />
+          <circle cx="650" cy="250" r="10" fill="url(#nodeGradient)" opacity="0.8" />
+          <circle cx="950" cy="300" r="7" fill="url(#nodeGradient)" opacity="0.7" />
+          
+          <circle cx="200" cy="380" r="6" fill="url(#nodeGradient2)" opacity="0.6" />
+          <circle cx="400" cy="400" r="8" fill="url(#nodeGradient2)" opacity="0.7" />
+          <circle cx="700" cy="450" r="9" fill="url(#nodeGradient2)" opacity="0.8" />
+          <circle cx="1000" cy="500" r="7" fill="url(#nodeGradient2)" opacity="0.6" />
+
+          {/* Gradients */}
+          <defs>
+            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#15654849" />
+              <stop offset="50%" stopColor="#10b98149" />
+              <stop offset="100%" stopColor="#15654849" />
+            </linearGradient>
+            <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#10b98139" />
+              <stop offset="50%" stopColor="#15654839" />
+              <stop offset="100%" stopColor="#10b98139" />
+            </linearGradient>
+            <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#15654829" />
+              <stop offset="50%" stopColor="#10b98129" />
+              <stop offset="100%" stopColor="#15654829" />
+            </linearGradient>
+            <radialGradient id="nodeGradient">
+              <stop offset="0%" stopColor="#156548" />
+              <stop offset="100%" stopColor="#10b981" />
+            </radialGradient>
+            <radialGradient id="nodeGradient2">
+              <stop offset="0%" stopColor="#10b981" />
+              <stop offset="100%" stopColor="#156548" />
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
+
+      {/* Subtle geometric pattern overlay */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
           backgroundImage: `
-            linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)
+            linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px)
           `,
           backgroundSize: '60px 60px'
         }} />

@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useMemo } from 'react';
 import { SDLCTemplate, SDLCTask, ProjectHealth, TeamMember, ProjectMetrics } from '@/types/sdlc';
 import { sdlcTemplates } from '@/data/sdlcTemplates';
@@ -133,7 +132,7 @@ export const useSDLC = () => {
       completedTasks,
       overdueTasks,
       blockedTasks,
-      averageCompletionTime,
+      averageCompletionTime: avgCompletionTime,
       burndownData,
       velocityData
     };

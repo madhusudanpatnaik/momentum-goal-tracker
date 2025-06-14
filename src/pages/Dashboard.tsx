@@ -15,7 +15,11 @@ const Dashboard = () => {
   const workGoals = goals.filter(goal => goal.category === 'work');
 
   const totalProgress = goals.length > 0 
-    ? goals.reduce((sum, goal) => sum + (goal.currentAmount / goal.targetAmount * 100), 0) / goals.length
+    ? goals.reduce((sum, goal) => {
+        const current = goal.currentAmount || 0;
+        const target = goal.targetAmount || 1;
+        return sum + (current / target * 100);
+      }, 0) / goals.length
     : 0;
 
   const todaysTasks = activeGoals.filter(goal => {
@@ -45,7 +49,7 @@ const Dashboard = () => {
                 <div>
                   <p className="text-slate-600 dark:text-slate-400 text-sm font-medium mb-1">Total Saved</p>
                   <p className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-                    ${userStats.totalSaved.toLocaleString()}
+                    ${(userStats.totalSaved || 0).toLocaleString()}
                   </p>
                 </div>
                 <div className="p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
@@ -189,22 +193,28 @@ const Dashboard = () => {
               </div>
             ) : (
               <div className="space-y-4">
-                {goals.slice(0, 3).map((goal) => (
-                  <div key={goal.id} className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-700 rounded-lg">
-                    <div>
-                      <h4 className="font-medium text-slate-900 dark:text-slate-100">{goal.title}</h4>
-                      <p className="text-sm text-slate-600 dark:text-slate-400">{goal.category} goal</p>
+                {goals.slice(0, 3).map((goal) => {
+                  const currentAmount = goal.currentAmount || 0;
+                  const targetAmount = goal.targetAmount || 1;
+                  const progressPercentage = ((currentAmount / targetAmount) * 100).toFixed(0);
+                  
+                  return (
+                    <div key={goal.id} className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-700 rounded-lg">
+                      <div>
+                        <h4 className="font-medium text-slate-900 dark:text-slate-100">{goal.title}</h4>
+                        <p className="text-sm text-slate-600 dark:text-slate-400">{goal.category} goal</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm font-medium text-slate-900 dark:text-slate-100">
+                          ${currentAmount.toLocaleString()} / ${targetAmount.toLocaleString()}
+                        </p>
+                        <p className="text-xs text-slate-600 dark:text-slate-400">
+                          {progressPercentage}% complete
+                        </p>
+                      </div>
                     </div>
-                    <div className="text-right">
-                      <p className="text-sm font-medium text-slate-900 dark:text-slate-100">
-                        ${goal.currentAmount.toLocaleString()} / ${goal.targetAmount.toLocaleString()}
-                      </p>
-                      <p className="text-xs text-slate-600 dark:text-slate-400">
-                        {((goal.currentAmount / goal.targetAmount) * 100).toFixed(0)}% complete
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
                 {goals.length > 3 && (
                   <Link to="/goals">
                     <Button variant="ghost" className="w-full text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">

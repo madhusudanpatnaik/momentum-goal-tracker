@@ -103,7 +103,7 @@ const Dashboard = () => {
         </div>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <Link to="/goals">
             <Card className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
               <CardHeader className="pb-3">
@@ -122,6 +122,28 @@ const Dashboard = () => {
                 <div className="flex justify-between text-sm">
                   <span className="text-slate-500">Personal: {personalGoals.length}</span>
                   <span className="text-slate-500">Work: {workGoals.length}</span>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+
+          <Link to="/calendar">
+            <Card className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg font-semibold text-slate-900 dark:text-slate-100 flex items-center justify-between">
+                  <div className="flex items-center">
+                    <Calendar className="w-5 h-5 mr-3 text-purple-600 dark:text-purple-400" />
+                    Calendar View
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-slate-400" />
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                  View deadlines and manage your schedule
+                </p>
+                <div className="text-sm text-slate-500">
+                  Track goal deadlines
                 </div>
               </CardContent>
             </Card>
@@ -155,7 +177,7 @@ const Dashboard = () => {
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg font-semibold text-slate-900 dark:text-slate-100 flex items-center justify-between">
                   <div className="flex items-center">
-                    <TrendingUp className="w-5 h-5 mr-3 text-purple-600 dark:text-purple-400" />
+                    <TrendingUp className="w-5 h-5 mr-3 text-indigo-600 dark:text-indigo-400" />
                     SDLC Management
                   </div>
                   <ArrowRight className="w-4 h-4 text-slate-400" />

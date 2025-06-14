@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,6 +10,7 @@ import Goals from "./pages/Goals";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import SDLCPage from "./pages/SDLCPage";
 import NotFound from "./pages/NotFound";
+import CalendarPage from "./pages/Calendar";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +32,12 @@ const App = () => (
             <>
               <Navigation />
               <Goals />
+            </>
+          } />
+          <Route path="/calendar" element={
+            <>
+              <Navigation />
+              <CalendarPage />
             </>
           } />
           <Route path="/analytics" element={

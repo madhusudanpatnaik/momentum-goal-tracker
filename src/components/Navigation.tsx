@@ -62,20 +62,6 @@ const Navigation = () => {
                 </Button>
               </Link>
               
-              <Link to="/calendar">
-                <Button
-                  variant="ghost"
-                  className={`${
-                    isActive('/calendar') 
-                      ? 'bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-100' 
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-                  }`}
-                >
-                  <Calendar className="w-4 h-4 mr-2" />
-                  Calendar
-                </Button>
-              </Link>
-              
               <Link to="/sdlc">
                 <Button
                   variant="ghost"
@@ -87,6 +73,20 @@ const Navigation = () => {
                 >
                   <Rocket className="w-4 h-4 mr-2" />
                   SDLC
+                </Button>
+              </Link>
+              
+              <Link to="/calendar">
+                <Button
+                  variant="ghost"
+                  className={`${
+                    isActive('/calendar') 
+                      ? 'bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-100' 
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                  }`}
+                >
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Calendar
                 </Button>
               </Link>
             </div>

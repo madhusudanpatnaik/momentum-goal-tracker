@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { useGoals } from '@/hooks/useGoals';
 import { format, isSameDay, parseISO } from 'date-fns';
-import { CalendarDays, Target, Clock } from 'lucide-react';
+import { CalendarDays, Target, Clock, Link } from 'lucide-react';
 
 const CalendarPage = () => {
   const { goals } = useGoals();
@@ -36,17 +36,31 @@ const CalendarPage = () => {
     return { status: 'future', color: 'text-green-600', bgColor: 'bg-green-50' };
   };
 
+  const handleGoogleCalendarConnect = () => {
+    console.log('Connecting to Google Calendar...');
+    // This would typically initiate OAuth flow with Google Calendar API
+    alert('Google Calendar integration coming soon! This would connect to your Google Calendar account.');
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
       <div className="container mx-auto px-6 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-2 tracking-tight">
-            Calendar & Deadlines
-          </h1>
-          <p className="text-slate-600 dark:text-slate-400 font-medium">
-            View your goals and their deadlines in calendar format.
-          </p>
+          <div className="flex justify-between items-start mb-4">
+            <div>
+              <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-2 tracking-tight">
+                Calendar & Deadlines
+              </h1>
+              <p className="text-slate-600 dark:text-slate-400 font-medium">
+                View your goals and their deadlines in calendar format.
+              </p>
+            </div>
+            <Button onClick={handleGoogleCalendarConnect} className="bg-blue-600 hover:bg-blue-700 text-white">
+              <Link className="w-4 h-4 mr-2" />
+              Connect Google Calendar
+            </Button>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

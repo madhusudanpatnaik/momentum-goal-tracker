@@ -17,6 +17,37 @@ const Landing = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-gray-100">
+      {/* Topological Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        {/* Main container - Topology-2 */}
+        <div className="absolute w-[647px] h-[658px] left-[960px] top-[151px] border-4 border-white rounded-lg"></div>
+        
+        {/* Vector 92 */}
+        <div className="absolute w-[647px] h-[658px] left-[960px] top-[151px] border-4 border-white rounded-lg"></div>
+        
+        {/* Vector 93 */}
+        <div className="absolute w-[98px] h-[101px] left-[1259px] top-[429px] border-4 border-white rounded-lg"></div>
+        
+        {/* Nested shapes creating spiral pattern */}
+        <div className="absolute w-[597px] h-[606px] left-[987px] top-[176px] border-4 border-white rounded-lg"></div>
+        <div className="absolute w-[546px] h-[552px] left-[1014px] top-[202px] border-4 border-white rounded-lg"></div>
+        <div className="absolute w-[496px] h-[500px] left-[1041px] top-[227px] border-4 border-white rounded-lg"></div>
+        <div className="absolute w-[446px] h-[448px] left-[1068px] top-[252px] border-4 border-white rounded-lg"></div>
+        <div className="absolute w-[395px] h-[395px] left-[1096px] top-[278px] border-4 border-white rounded-lg"></div>
+        <div className="absolute w-[345px] h-[343px] left-[1123px] top-[303px] border-4 border-white rounded-lg"></div>
+        <div className="absolute w-[294px] h-[291px] left-[1150px] top-[328px] border-4 border-white rounded-lg"></div>
+        <div className="absolute w-[245px] h-[239px] left-[1177px] top-[353px] border-4 border-white rounded-lg"></div>
+        <div className="absolute w-[194px] h-[186px] left-[1204px] top-[379px] border-4 border-white rounded-lg"></div>
+        <div className="absolute w-[145px] h-[139px] left-[1232px] top-[404px] border-4 border-white rounded-lg"></div>
+        
+        {/* Mirror pattern on the left side for balance */}
+        <div className="absolute w-[647px] h-[658px] left-[-400px] top-[300px] border-4 border-white rounded-lg transform rotate-45 opacity-50"></div>
+        <div className="absolute w-[546px] h-[552px] left-[-350px] top-[330px] border-4 border-white rounded-lg transform rotate-45 opacity-40"></div>
+        <div className="absolute w-[446px] h-[448px] left-[-300px] top-[360px] border-4 border-white rounded-lg transform rotate-45 opacity-30"></div>
+        <div className="absolute w-[345px] h-[343px] left-[-250px] top-[390px] border-4 border-white rounded-lg transform rotate-45 opacity-20"></div>
+        <div className="absolute w-[245px] h-[239px] left-[-200px] top-[420px] border-4 border-white rounded-lg transform rotate-45 opacity-15"></div>
+      </div>
+
       {/* Sharper, more defined background pattern */}
       <div className="absolute inset-0 opacity-20">
         <svg

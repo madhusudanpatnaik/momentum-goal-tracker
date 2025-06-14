@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { useNavigate } from 'react-router-dom';
@@ -169,8 +168,7 @@ const Landing = () => {
           </div>
 
           <p className="text-gray-700 text-xl md:text-2xl max-w-2xl mx-auto mb-12 leading-relaxed font-semibold">
-            Momentum brings clarity and focus to your goals with elegant dashboards, 
-            project tracking, and data-driven insights that keep you moving forward.
+            Built for action, built for success. For founders, entrepreneurs, and anyone ready to turn their biggest dreams into reality.
           </p>
 
           <Button

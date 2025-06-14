@@ -1,11 +1,10 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useSDLC } from '@/hooks/useSDLC';
+import { useSDLCRealtime } from '@/hooks/useSDLCRealtime';
 import { TaskManagement } from '@/components/TaskManagement';
 import { ProjectMetrics } from '@/components/ProjectMetrics';
 import { 
@@ -21,7 +20,11 @@ import {
   BarChart3,
   Settings,
   Plus,
-  Layers
+  Layers,
+  Bell,
+  Zap,
+  Wifi,
+  WifiOff
 } from 'lucide-react';
 
 export const SDLCManager = () => {
@@ -30,13 +33,19 @@ export const SDLCManager = () => {
     activeTemplate, 
     tasks, 
     teamMembers,
-    projectHealth, 
-    projectMetrics,
+    realtimeProjectHealth, 
+    realtimeMetrics,
+    notifications,
+    isRealTimeEnabled,
+    lastUpdateTime,
+    teamUtilization,
     startProject, 
     updateTask,
     assignTask,
-    addTeamMember
-  } = useSDLC();
+    addTeamMember,
+    clearNotifications,
+    toggleRealTime
+  } = useSDLCRealtime();
   
   const [showTemplates, setShowTemplates] = useState(!activeTemplate);
   const [activeTab, setActiveTab] = useState('overview');
@@ -162,11 +171,36 @@ export const SDLCManager = () => {
 
   return (
     <div className="space-y-6">
+      {/* Real-time Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
-            {activeTemplate.name}
-          </h2>
+          <div className="flex items-center gap-4 mb-2">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
+              {activeTemplate.name}
+            </h2>
+            <div className="flex items-center gap-2">
+              <Button
+                onClick={toggleRealTime}
+                variant="outline"
+                size="sm"
+                className="flex items-center gap-2"
+              >
+                {isRealTimeEnabled ? <Wifi className="w-4 h-4" /> : <WifiOff className="w-4 h-4" />}
+                {isRealTimeEnabled ? 'Live' : 'Static'}
+              </Button>
+              {notifications.length > 0 && (
+                <Button
+                  onClick={clearNotifications}
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center gap-2"
+                >
+                  <Bell className="w-4 h-4" />
+                  {notifications.length}
+                </Button>
+              )}
+            </div>
+          </div>
           <p className="text-slate-600 dark:text-slate-400">
             {activeTemplate.description}
           </p>
@@ -175,6 +209,11 @@ export const SDLCManager = () => {
             <span className="text-sm text-gray-500">
               {activeTemplate.estimatedDuration} weeks • {activeTemplate.teamSize} team members
             </span>
+            {isRealTimeEnabled && (
+              <span className="text-xs text-gray-400">
+                Updated: {lastUpdateTime.toLocaleTimeString()}
+              </span>
+            )}
           </div>
         </div>
         <Button
@@ -185,6 +224,35 @@ export const SDLCManager = () => {
         </Button>
       </div>
 
+      {/* Notifications */}
+      {notifications.length > 0 && (
+        <Card className="border-orange-200 bg-orange-50 dark:bg-orange-900/20">
+          <CardContent className="p-4">
+            <div className="flex items-start gap-3">
+              <AlertTriangle className="w-5 h-5 text-orange-600 mt-0.5" />
+              <div className="flex-1">
+                <h4 className="font-medium text-orange-800 dark:text-orange-200 mb-2">Active Alerts</h4>
+                <ul className="space-y-1">
+                  {notifications.slice(0, 3).map((notification, index) => (
+                    <li key={index} className="text-sm text-orange-700 dark:text-orange-300">
+                      • {notification}
+                    </li>
+                  ))}
+                </ul>
+                {notifications.length > 3 && (
+                  <p className="text-sm text-orange-600 dark:text-orange-400 mt-1">
+                    +{notifications.length - 3} more alerts
+                  </p>
+                )}
+              </div>
+              <Button onClick={clearNotifications} variant="ghost" size="sm">
+                Clear
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -194,12 +262,13 @@ export const SDLCManager = () => {
         </TabsList>
 
         <TabsContent value="overview" className="space-y-6">
-          {/* Project Health Score */}
+          {/* Enhanced Project Health Score */}
           <Card className="border-2">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                {getHealthIcon(projectHealth.status)}
-                Project Health Score
+                {getHealthIcon(realtimeProjectHealth.status)}
+                Real-time Project Health
+                {isRealTimeEnabled && <Zap className="w-4 h-4 text-blue-500" />}
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -207,36 +276,50 @@ export const SDLCManager = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="text-4xl font-bold text-slate-900 dark:text-slate-100">
-                      {projectHealth.score}%
+                      {realtimeProjectHealth.score}%
                     </div>
-                    <Badge className={getStatusColor(projectHealth.status)}>
-                      {projectHealth.status.charAt(0).toUpperCase() + projectHealth.status.slice(1)}
+                    <Badge className={getStatusColor(realtimeProjectHealth.status)}>
+                      {realtimeProjectHealth.status.charAt(0).toUpperCase() + realtimeProjectHealth.status.slice(1)}
                     </Badge>
                   </div>
                   <div className="text-right space-y-1">
                     <div className="text-sm text-slate-600 dark:text-slate-400">
-                      Task Completion: {projectHealth.factors.taskCompletion}%
+                      Task Completion: {realtimeProjectHealth.factors.taskCompletion}%
                     </div>
                     <div className="text-sm text-slate-600 dark:text-slate-400">
-                      Overdue Items: {projectHealth.factors.overdueItems}
+                      Overdue Items: {realtimeProjectHealth.factors.overdueItems}
                     </div>
                     <div className="text-sm text-slate-600 dark:text-slate-400">
-                      Schedule Adherence: {projectHealth.factors.scheduleAdherence}%
+                      Schedule Adherence: {realtimeProjectHealth.factors.scheduleAdherence}%
                     </div>
+                    {realtimeProjectHealth.alerts && (
+                      <div className="space-y-1">
+                        {realtimeProjectHealth.alerts.criticalOverdue > 0 && (
+                          <Badge variant="destructive" className="text-xs">
+                            {realtimeProjectHealth.alerts.criticalOverdue} Critical Overdue
+                          </Badge>
+                        )}
+                        {realtimeProjectHealth.alerts.blockedCritical > 0 && (
+                          <Badge variant="destructive" className="text-xs">
+                            {realtimeProjectHealth.alerts.blockedCritical} Critical Blocked
+                          </Badge>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
 
-                <Progress value={projectHealth.score} className="h-3" />
+                <Progress value={realtimeProjectHealth.score} className="h-3" />
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {projectHealth.factors.riskAreas.length > 0 && (
+                  {realtimeProjectHealth.factors.riskAreas.length > 0 && (
                     <div className="space-y-3">
                       <h4 className="font-medium text-slate-900 dark:text-slate-100 flex items-center gap-2">
                         <AlertTriangle className="w-4 h-4 text-orange-500" />
                         Risk Areas
                       </h4>
                       <ul className="space-y-2">
-                        {projectHealth.factors.riskAreas.map((risk, index) => (
+                        {realtimeProjectHealth.factors.riskAreas.map((risk, index) => (
                           <li key={index} className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-2">
                             <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
                             {risk}
@@ -246,14 +329,14 @@ export const SDLCManager = () => {
                     </div>
                   )}
 
-                  {projectHealth.recommendations.length > 0 && (
+                  {realtimeProjectHealth.recommendations.length > 0 && (
                     <div className="space-y-3">
                       <h4 className="font-medium text-slate-900 dark:text-slate-100 flex items-center gap-2">
                         <TrendingUp className="w-4 h-4 text-blue-500" />
                         Recommendations
                       </h4>
                       <ul className="space-y-2">
-                        {projectHealth.recommendations.map((rec, index) => (
+                        {realtimeProjectHealth.recommendations.slice(0, 5).map((rec, index) => (
                           <li key={index} className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-2">
                             <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                             {rec}
@@ -266,6 +349,36 @@ export const SDLCManager = () => {
               </div>
             </CardContent>
           </Card>
+
+          {/* Real-time Metrics Overview */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <Card>
+              <CardContent className="p-4">
+                <div className="text-2xl font-bold text-blue-600">{realtimeMetrics.completedThisWeek}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Completed This Week</div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="p-4">
+                <div className="text-2xl font-bold text-green-600">{realtimeMetrics.productivityScore}%</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Productivity Score</div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="p-4">
+                <div className="text-2xl font-bold text-red-600">{realtimeMetrics.criticalTasksCount}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Critical Tasks</div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="p-4">
+                <div className="text-2xl font-bold text-purple-600">
+                  {teamUtilization.filter(t => t.status === 'overloaded').length}
+                </div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Overloaded Members</div>
+              </CardContent>
+            </Card>
+          </div>
 
           {/* Phase Overview */}
           <Card>
@@ -317,47 +430,87 @@ export const SDLCManager = () => {
         </TabsContent>
 
         <TabsContent value="metrics">
-          <ProjectMetrics metrics={projectMetrics} />
+          <ProjectMetrics metrics={realtimeMetrics} />
         </TabsContent>
 
         <TabsContent value="team">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Users className="w-5 h-5" />
-                Team Members
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {teamMembers.map((member) => (
-                  <div key={member.id} className="border rounded-lg p-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                        <Users className="w-5 h-5 text-blue-600" />
-                      </div>
+          <div className="space-y-6">
+            {/* Team Utilization Overview */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Activity className="w-5 h-5" />
+                  Team Utilization (Real-time)
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {teamUtilization.map((member) => (
+                    <div key={member.memberId} className="flex items-center justify-between p-3 border rounded-lg">
                       <div>
-                        <h4 className="font-medium">{member.name}</h4>
-                        <p className="text-sm text-gray-600">{member.role}</p>
+                        <h4 className="font-medium">{member.memberName}</h4>
+                        <p className="text-sm text-gray-600">
+                          {member.assignedHours}h / {member.capacity}h assigned
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-24">
+                          <Progress value={member.utilization} className="h-2" />
+                        </div>
+                        <Badge 
+                          variant={
+                            member.status === 'overloaded' ? 'destructive' : 
+                            member.status === 'high' ? 'default' : 'secondary'
+                          }
+                        >
+                          {member.utilization}%
+                        </Badge>
                       </div>
                     </div>
-                    <div className="mt-3">
-                      <div className="text-sm text-gray-500">
-                        Capacity: {member.capacity}h/week
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Team Members grid */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Users className="w-5 h-5" />
+                  Team Members
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {teamMembers.map((member) => (
+                    <div key={member.id} className="border rounded-lg p-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                          <Users className="w-5 h-5 text-blue-600" />
+                        </div>
+                        <div>
+                          <h4 className="font-medium">{member.name}</h4>
+                          <p className="text-sm text-gray-600">{member.role}</p>
+                        </div>
                       </div>
-                      <div className="flex flex-wrap gap-1 mt-2">
-                        {member.skills.map(skill => (
-                          <Badge key={skill} variant="secondary" className="text-xs">
-                            {skill}
-                          </Badge>
-                        ))}
+                      <div className="mt-3">
+                        <div className="text-sm text-gray-500">
+                          Capacity: {member.capacity}h/week
+                        </div>
+                        <div className="flex flex-wrap gap-1 mt-2">
+                          {member.skills.map(skill => (
+                            <Badge key={skill} variant="secondary" className="text-xs">
+                              {skill}
+                            </Badge>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </TabsContent>
       </Tabs>
     </div>

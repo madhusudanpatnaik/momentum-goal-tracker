@@ -1,11 +1,13 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
 import { useNavigate } from 'react-router-dom';
 import { Target, TrendingUp, BarChart3, Zap } from 'lucide-react';
+import { useGoals } from '@/hooks/useGoals';
 
 const Landing = () => {
   const navigate = useNavigate();
+  const { goals, userStats } = useGoals();
 
   const handleGetStarted = () => {
     navigate('/dashboard');
@@ -14,6 +16,21 @@ const Landing = () => {
   const handleBookDemo = () => {
     navigate('/dashboard');
   };
+
+  // Calculate overall progress
+  const safeGoals = goals || [];
+  const activeGoals = safeGoals.filter(goal => goal.status === 'active');
+  
+  const totalProgress = activeGoals.length > 0 
+    ? activeGoals.reduce((sum, goal) => {
+        const current = goal.currentAmount || 0;
+        const target = goal.targetAmount || 1;
+        return sum + (current / target * 100);
+      }, 0) / activeGoals.length
+    : 0;
+
+  const completedGoals = safeGoals.filter(goal => goal.status === 'completed').length;
+  const totalGoals = safeGoals.length;
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-gray-100">
@@ -122,6 +139,31 @@ const Landing = () => {
           </Button>
         </div>
       </nav>
+
+      {/* Goal Tracer Bar Section */}
+      {totalGoals > 0 && (
+        <div className="relative z-10 container mx-auto px-8 py-6">
+          <div className="bg-white/90 backdrop-blur-sm border border-gray-200 rounded-2xl p-6 max-w-4xl mx-auto shadow-lg">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-bold text-gray-900">Your Progress</h3>
+              <div className="flex items-center gap-4 text-sm font-semibold text-gray-600">
+                <span>{completedGoals} of {totalGoals} goals completed</span>
+                <span>{Math.round(totalProgress)}% average progress</span>
+              </div>
+            </div>
+            <Progress value={totalProgress} className="h-3" />
+            <div className="mt-2 text-center">
+              <p className="text-sm text-gray-600 font-medium">
+                {totalProgress < 25 ? "Just getting started! Keep pushing forward." :
+                 totalProgress < 50 ? "Great momentum! You're making solid progress." :
+                 totalProgress < 75 ? "Excellent work! You're more than halfway there." :
+                 totalProgress < 100 ? "Almost there! The finish line is in sight." :
+                 "Outstanding! You've achieved your goals!"}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Hero Section with enhanced typography */}
       <div className="relative z-10 container mx-auto px-8 py-20 text-center">

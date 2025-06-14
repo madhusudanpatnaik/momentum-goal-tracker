@@ -1,8 +1,6 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Star, Target, TrendingUp, Calendar, Zap, Shield, Crown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Landing = () => {
@@ -12,149 +10,114 @@ const Landing = () => {
     navigate('/dashboard');
   };
 
-  return (
-    <div className="min-h-screen relative overflow-hidden" style={{
-      background: 'radial-gradient(ellipse at center, #4c1d95 0%, #312e81 25%, #1e1b4b 50%, #0f172a 100%)'
-    }}>
-      {/* Premium Starfield Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(150)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full bg-white opacity-70 animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              width: `${Math.random() * 3 + 1}px`,
-              height: `${Math.random() * 3 + 1}px`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${Math.random() * 2 + 2}s`,
-              boxShadow: '0 0 6px rgba(255,255,255,0.8)'
-            }}
-          />
-        ))}
-      </div>
+  const handleBookDemo = () => {
+    navigate('/dashboard');
+  };
 
-      {/* Elegant Grid Overlay */}
-      <div className="absolute inset-0 opacity-5">
+  return (
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      {/* Subtle grid pattern */}
+      <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
           backgroundImage: `
             linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
           `,
-          backgroundSize: '60px 60px'
+          backgroundSize: '50px 50px'
         }} />
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 py-12">
-        {/* Hero Section */}
-        <div className="text-center mb-20">
-          <div className="flex items-center justify-center gap-3 mb-8">
-            <Crown className="w-12 h-12 text-purple-300 animate-pulse" />
-            <h1 className="text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-white to-purple-200 tracking-wide">
-              GOALUX
-            </h1>
-            <Crown className="w-12 h-12 text-purple-300 animate-pulse" />
-          </div>
-          <p className="text-3xl text-purple-200/90 max-w-4xl mx-auto leading-relaxed mb-8">
-            The Ultimate Premium Goal Tracking Experience
-          </p>
-          <p className="text-xl text-purple-200/70 max-w-3xl mx-auto leading-relaxed mb-12">
-            Transform your savings journey with intelligent goal tracking, premium insights, and luxurious design that motivates you to achieve your dreams.
-          </p>
+      {/* Navigation */}
+      <nav className="relative z-10 flex items-center justify-between px-8 py-6">
+        <div className="text-3xl font-bold text-white">
+          GOALUX
+        </div>
+        <div className="hidden md:flex items-center gap-8">
+          <span className="text-slate-300 hover:text-white cursor-pointer transition-colors">Features</span>
+          <span className="text-slate-300 hover:text-white cursor-pointer transition-colors">Pricing</span>
+          <span className="text-slate-300 hover:text-white cursor-pointer transition-colors">Community</span>
+          <Button
+            variant="outline"
+            className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white"
+          >
+            Sign in
+          </Button>
+          <Button
+            onClick={handleBookDemo}
+            className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-2 rounded-full"
+          >
+            Book a demo
+          </Button>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <div className="relative z-10 container mx-auto px-8 py-20 text-center">
+        <div className="max-w-5xl mx-auto">
+          <h1 className="text-slate-300 text-xl md:text-2xl mb-8 font-medium tracking-wide">
+            Get your financial goals done
+          </h1>
           
-          <div className="flex items-center justify-center gap-3 mb-12">
-            <Star className="w-5 h-5 text-purple-300 animate-pulse" />
-            <span className="text-purple-300/90 text-sm tracking-wider">LUXURY • PRECISION • SUCCESS</span>
-            <Star className="w-5 h-5 text-purple-300 animate-pulse" />
+          <div className="relative mb-12">
+            <h2 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white leading-none mb-4">
+              10x faster
+            </h2>
+            
+            {/* Tool icons placeholder */}
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <span className="text-slate-400 text-sm">Replaces</span>
+              <div className="flex gap-2">
+                <div className="w-8 h-8 bg-purple-500 rounded-md flex items-center justify-center text-white text-xs font-bold">C</div>
+                <div className="w-8 h-8 bg-yellow-500 rounded-md flex items-center justify-center text-white text-xs font-bold">N</div>
+                <div className="w-8 h-8 bg-green-500 rounded-md flex items-center justify-center text-white text-xs font-bold">E</div>
+                <div className="w-8 h-8 bg-red-500 rounded-md flex items-center justify-center text-white text-xs font-bold">T</div>
+                <div className="w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center text-white text-xs font-bold">M</div>
+              </div>
+            </div>
           </div>
+
+          <p className="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+            GOALUX gives founders and individuals the tools they need to 
+            track progress, manage finances, and achieve goals fast.
+          </p>
 
           <Button
             onClick={handleGetStarted}
-            className="bg-gradient-to-r from-purple-500/80 to-purple-600/80 hover:from-purple-400/90 hover:to-purple-500/90 backdrop-blur-xl border border-white/20 text-white px-12 py-6 text-xl rounded-2xl shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-purple-500/25"
+            className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2"
           >
-            <Zap className="w-6 h-6 mr-3" />
-            Get Started Now
+            Book a 15-minute demo
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
           </Button>
         </div>
+      </div>
 
-        {/* Features Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-          <Card className="bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl rounded-2xl hover:bg-white/15 transition-all duration-300 hover:scale-105">
-            <CardHeader className="text-center pb-4">
-              <Target className="w-12 h-12 text-purple-300 mx-auto mb-4" />
-              <CardTitle className="text-white text-2xl">Smart Goal Tracking</CardTitle>
-            </CardHeader>
-            <CardContent className="text-center">
-              <p className="text-purple-200/80 leading-relaxed">
-                Set ambitious goals and track your progress with intelligent insights and beautiful visualizations.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl rounded-2xl hover:bg-white/15 transition-all duration-300 hover:scale-105">
-            <CardHeader className="text-center pb-4">
-              <TrendingUp className="w-12 h-12 text-purple-300 mx-auto mb-4" />
-              <CardTitle className="text-white text-2xl">Investment Planning</CardTitle>
-            </CardHeader>
-            <CardContent className="text-center">
-              <p className="text-purple-200/80 leading-relaxed">
-                Plan your monthly investments and see exactly when you'll reach your financial goals.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl rounded-2xl hover:bg-white/15 transition-all duration-300 hover:scale-105">
-            <CardHeader className="text-center pb-4">
-              <Calendar className="w-12 h-12 text-purple-300 mx-auto mb-4" />
-              <CardTitle className="text-white text-2xl">Premium Analytics</CardTitle>
-            </CardHeader>
-            <CardContent className="text-center">
-              <p className="text-purple-200/80 leading-relaxed">
-                Get detailed analytics and insights to optimize your savings strategy and achieve goals faster.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Premium Benefits */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-white to-purple-200 mb-12">
-            Why Choose GOALUX?
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="flex items-center gap-4 bg-white/5 backdrop-blur-xl rounded-xl p-6 border border-white/10">
-              <Shield className="w-8 h-8 text-emerald-400" />
-              <div className="text-left">
-                <h3 className="text-white font-semibold text-lg">Secure & Private</h3>
-                <p className="text-purple-200/70">Your financial data stays on your device</p>
-              </div>
+      {/* Features Section */}
+      <div className="relative z-10 container mx-auto px-8 py-20">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:bg-slate-800/70 transition-all duration-300">
+            <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+              <div className="w-6 h-6 bg-purple-500 rounded"></div>
             </div>
-            
-            <div className="flex items-center gap-4 bg-white/5 backdrop-blur-xl rounded-xl p-6 border border-white/10">
-              <Zap className="w-8 h-8 text-yellow-400" />
-              <div className="text-left">
-                <h3 className="text-white font-semibold text-lg">Lightning Fast</h3>
-                <p className="text-purple-200/70">Instant updates and smooth performance</p>
-              </div>
-            </div>
+            <h3 className="text-white text-lg font-semibold mb-2">Goal Tracking</h3>
+            <p className="text-slate-400">Set and track personal and business goals with beautiful progress visualizations.</p>
           </div>
-        </div>
 
-        {/* Call to Action */}
-        <div className="text-center">
-          <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-12 border border-white/10 max-w-2xl mx-auto">
-            <h3 className="text-4xl font-bold text-white mb-6">Ready to Transform Your Goals?</h3>
-            <p className="text-purple-200/80 text-lg mb-8 leading-relaxed">
-              Join thousands of successful goal achievers who trust GOALUX to make their dreams a reality.
-            </p>
-            <Button
-              onClick={handleGetStarted}
-              className="bg-gradient-to-r from-emerald-500/80 to-emerald-600/80 hover:from-emerald-400/90 hover:to-emerald-500/90 backdrop-blur-xl border border-white/20 text-white px-10 py-4 text-lg rounded-xl shadow-2xl transition-all duration-300 hover:scale-105"
-            >
-              Start Your Journey
-            </Button>
+          <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:bg-slate-800/70 transition-all duration-300">
+            <div className="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4">
+              <div className="w-6 h-6 bg-cyan-500 rounded"></div>
+            </div>
+            <h3 className="text-white text-lg font-semibold mb-2">Smart Analytics</h3>
+            <p className="text-slate-400">Get insights into your progress with detailed analytics and milestone tracking.</p>
+          </div>
+
+          <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:bg-slate-800/70 transition-all duration-300">
+            <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+              <div className="w-6 h-6 bg-green-500 rounded"></div>
+            </div>
+            <h3 className="text-white text-lg font-semibold mb-2">Gamification</h3>
+            <p className="text-slate-400">Stay motivated with XP, levels, badges, and pixel-art achievements.</p>
           </div>
         </div>
       </div>

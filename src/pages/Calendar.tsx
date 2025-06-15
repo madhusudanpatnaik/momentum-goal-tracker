@@ -45,24 +45,24 @@ const CalendarPage = () => {
     <div className="min-h-screen">
       <div className="container mx-auto px-6 py-8">
         {/* Enhanced Header */}
-        <div className="mb-8 bg-slate-800/95 dark:bg-slate-900/95 backdrop-blur-lg rounded-3xl p-8 border border-slate-700/50 dark:border-slate-600/50 shadow-xl shadow-slate-900/20">
+        <div className="mb-8 bg-gradient-to-br from-slate-950/95 to-blue-950/95 backdrop-blur-xl rounded-3xl p-8 border border-blue-800/30 shadow-2xl shadow-blue-900/30">
           <div className="flex justify-between items-start mb-4">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-slate-600 to-slate-700 rounded-2xl flex items-center justify-center shadow-lg">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-2xl flex items-center justify-center shadow-xl shadow-blue-500/30">
                 <CalendarDays className="w-6 h-6 text-white" />
               </div>
               <div>
                 <h1 className="text-4xl font-black text-white mb-2 tracking-tight">
                   Calendar & Deadlines
                 </h1>
-                <p className="text-slate-300 text-lg font-medium">
+                <p className="text-blue-200 text-lg font-medium">
                   View your goals and their deadlines in calendar format.
                 </p>
               </div>
             </div>
             <Button 
               onClick={handleGoogleCalendarConnect} 
-              className="bg-blue-600 hover:bg-blue-700 text-white shadow-lg border border-blue-500/50 font-semibold"
+              className="bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/30 border border-blue-500/50 font-semibold"
             >
               <Link className="w-4 h-4 mr-2" />
               Connect Google Calendar
@@ -71,24 +71,24 @@ const CalendarPage = () => {
 
           {/* Quick stats */}
           <div className="grid grid-cols-3 gap-4 mt-6">
-            <div className="bg-slate-700/50 dark:bg-slate-800/50 rounded-xl p-4 border border-slate-600/50 dark:border-slate-500/50">
+            <div className="bg-slate-900/60 backdrop-blur rounded-xl p-4 border border-blue-700/30">
               <div className="flex items-center gap-2 mb-2">
                 <Target className="w-4 h-4 text-blue-400" />
-                <div className="text-slate-300 text-sm font-medium">Total Goals</div>
+                <div className="text-blue-200 text-sm font-medium">Total Goals</div>
               </div>
               <div className="text-2xl font-bold text-white">{goals.length}</div>
             </div>
-            <div className="bg-slate-700/50 dark:bg-slate-800/50 rounded-xl p-4 border border-slate-600/50 dark:border-slate-500/50">
+            <div className="bg-slate-900/60 backdrop-blur rounded-xl p-4 border border-blue-700/30">
               <div className="flex items-center gap-2 mb-2">
-                <CalendarDays className="w-4 h-4 text-green-400" />
-                <div className="text-slate-300 text-sm font-medium">With Deadlines</div>
+                <CalendarDays className="w-4 h-4 text-cyan-400" />
+                <div className="text-blue-200 text-sm font-medium">With Deadlines</div>
               </div>
               <div className="text-2xl font-bold text-white">{goalsWithDeadlines.length}</div>
             </div>
-            <div className="bg-slate-700/50 dark:bg-slate-800/50 rounded-xl p-4 border border-slate-600/50 dark:border-slate-500/50">
+            <div className="bg-slate-900/60 backdrop-blur rounded-xl p-4 border border-blue-700/30">
               <div className="flex items-center gap-2 mb-2">
                 <Clock className="w-4 h-4 text-orange-400" />
-                <div className="text-slate-300 text-sm font-medium">Upcoming</div>
+                <div className="text-blue-200 text-sm font-medium">Upcoming</div>
               </div>
               <div className="text-2xl font-bold text-white">{upcomingGoals.length}</div>
             </div>
@@ -97,7 +97,7 @@ const CalendarPage = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Calendar */}
-          <Card className="bg-slate-800/95 dark:bg-slate-900/95 border border-slate-700/50 dark:border-slate-600/50 shadow-xl backdrop-blur-lg">
+          <Card className="bg-gradient-to-br from-slate-950/95 to-blue-950/95 border border-blue-800/30 shadow-2xl shadow-blue-900/30 backdrop-blur-xl">
             <CardHeader>
               <CardTitle className="text-lg font-semibold text-white flex items-center">
                 <CalendarDays className="w-5 h-5 mr-3 text-blue-400" />
@@ -115,7 +115,7 @@ const CalendarPage = () => {
                 }}
                 modifiersStyles={{
                   hasGoal: {
-                    backgroundColor: '#3b82f6',
+                    backgroundColor: '#2563eb',
                     color: 'white',
                     fontWeight: 'bold'
                   }
@@ -125,7 +125,7 @@ const CalendarPage = () => {
           </Card>
 
           {/* Selected Date Goals */}
-          <Card className="bg-slate-800/95 dark:bg-slate-900/95 border border-slate-700/50 dark:border-slate-600/50 shadow-xl backdrop-blur-lg">
+          <Card className="bg-gradient-to-br from-slate-950/95 to-blue-950/95 border border-blue-800/30 shadow-2xl shadow-blue-900/30 backdrop-blur-xl">
             <CardHeader>
               <CardTitle className="text-lg font-semibold text-white">
                 {selectedDate ? format(selectedDate, 'MMMM d, yyyy') : 'Select a Date'}
@@ -134,8 +134,8 @@ const CalendarPage = () => {
             <CardContent>
               {selectedDateGoals.length === 0 ? (
                 <div className="text-center py-8">
-                  <Target className="w-12 h-12 text-slate-400 mx-auto mb-4" />
-                  <p className="text-slate-300">
+                  <Target className="w-12 h-12 text-blue-400 mx-auto mb-4" />
+                  <p className="text-blue-200">
                     No goals due on this date
                   </p>
                 </div>
@@ -147,14 +147,14 @@ const CalendarPage = () => {
                     const progressPercentage = ((currentAmount / targetAmount) * 100).toFixed(0);
                     
                     return (
-                      <div key={goal.id} className="p-4 bg-slate-700/50 dark:bg-slate-800/50 rounded-xl border border-slate-600/50 dark:border-slate-500/50">
+                      <div key={goal.id} className="p-4 bg-slate-900/60 backdrop-blur rounded-xl border border-blue-700/30">
                         <h4 className="font-medium text-white mb-1">
                           {goal.title}
                         </h4>
-                        <p className="text-sm text-slate-300 mb-2">
+                        <p className="text-sm text-blue-200 mb-2">
                           {goal.category} • {progressPercentage}% complete
                         </p>
-                        <div className="text-sm text-slate-200">
+                        <div className="text-sm text-blue-100">
                           ${currentAmount.toLocaleString()} / ${targetAmount.toLocaleString()}
                         </div>
                       </div>
@@ -166,7 +166,7 @@ const CalendarPage = () => {
           </Card>
 
           {/* Upcoming Deadlines */}
-          <Card className="bg-slate-800/95 dark:bg-slate-900/95 border border-slate-700/50 dark:border-slate-600/50 shadow-xl backdrop-blur-lg">
+          <Card className="bg-gradient-to-br from-slate-950/95 to-blue-950/95 border border-blue-800/30 shadow-2xl shadow-blue-900/30 backdrop-blur-xl">
             <CardHeader>
               <CardTitle className="text-lg font-semibold text-white flex items-center">
                 <Clock className="w-5 h-5 mr-3 text-orange-400" />
@@ -176,8 +176,8 @@ const CalendarPage = () => {
             <CardContent>
               {upcomingGoals.length === 0 ? (
                 <div className="text-center py-8">
-                  <Clock className="w-12 h-12 text-slate-400 mx-auto mb-4" />
-                  <p className="text-slate-300">
+                  <Clock className="w-12 h-12 text-blue-400 mx-auto mb-4" />
+                  <p className="text-blue-200">
                     No upcoming deadlines
                   </p>
                 </div>
@@ -200,10 +200,10 @@ const CalendarPage = () => {
                           </span>
                         </div>
                         <div className="flex justify-between items-center text-xs">
-                          <span className="text-slate-300">
+                          <span className="text-blue-200">
                             {progressPercentage}% complete
                           </span>
-                          <span className="text-slate-300">
+                          <span className="text-blue-200">
                             {goal.category}
                           </span>
                         </div>

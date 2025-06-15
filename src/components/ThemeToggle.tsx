@@ -27,7 +27,7 @@ export const ThemeToggle = () => {
       onClick={toggleTheme}
       variant="outline"
       size="sm"
-      className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white dark:border-slate-600 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:border-slate-500 dark:hover:text-white transition-all duration-200 font-semibold"
+      className="border-blue-700/50 text-blue-200 hover:bg-blue-800/40 hover:border-blue-600/50 hover:text-white transition-all duration-200 font-semibold backdrop-blur"
     >
       {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
     </Button>

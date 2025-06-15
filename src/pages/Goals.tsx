@@ -22,17 +22,17 @@ const Goals = () => {
     <div className="min-h-screen">
       <div className="container mx-auto px-6 py-8">
         {/* Enhanced Header */}
-        <div className="mb-8 bg-slate-800/95 dark:bg-slate-900/95 backdrop-blur-lg rounded-3xl p-8 border border-slate-700/50 dark:border-slate-600/50 shadow-xl shadow-slate-900/20">
+        <div className="mb-8 bg-gradient-to-br from-slate-950/95 to-blue-950/95 backdrop-blur-xl rounded-3xl p-8 border border-blue-800/30 shadow-2xl shadow-blue-900/30">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-slate-600 to-slate-700 rounded-2xl flex items-center justify-center shadow-lg">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-2xl flex items-center justify-center shadow-xl shadow-blue-500/30">
                 <Target className="w-6 h-6 text-white" />
               </div>
               <div>
                 <h1 className="text-4xl font-black text-white mb-2 tracking-tight">
                   Goals Management
                 </h1>
-                <p className="text-slate-300 text-lg font-medium">
+                <p className="text-blue-200 text-lg font-medium">
                   Track and manage your personal and work goals with precision.
                 </p>
               </div>
@@ -41,18 +41,18 @@ const Goals = () => {
             {/* Header Actions */}
             <div className="flex items-center gap-4">
               <div className="relative">
-                <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
+                <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-300" />
                 <input
                   type="text"
                   placeholder="Search goals..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 pr-4 py-2 border border-slate-600 dark:border-slate-500 rounded-xl focus:ring-2 focus:ring-slate-500 focus:border-transparent bg-slate-700/50 dark:bg-slate-800/50 backdrop-blur text-white placeholder-slate-400 font-medium"
+                  className="pl-10 pr-4 py-2 border border-blue-700/50 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-400 bg-slate-900/60 backdrop-blur text-white placeholder-blue-300 font-medium"
                 />
               </div>
               <Button
                 onClick={() => setShowCreateForm(true)}
-                className="bg-slate-700 hover:bg-slate-600 dark:bg-slate-600 dark:hover:bg-slate-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg border border-slate-600/50 dark:border-slate-500/50"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl font-semibold shadow-lg shadow-blue-500/30 border border-blue-500/50"
               >
                 <Plus className="w-4 h-4 mr-2" />
                 Create Goal
@@ -61,13 +61,13 @@ const Goals = () => {
           </div>
 
           {/* Mode Toggle */}
-          <div className="flex items-center gap-2 bg-slate-700/50 dark:bg-slate-800/50 rounded-2xl p-1 w-fit border border-slate-600/50 dark:border-slate-500/50">
+          <div className="flex items-center gap-2 bg-slate-900/60 backdrop-blur rounded-2xl p-1 w-fit border border-blue-700/30">
             <Button
               onClick={() => setActiveMode('personal')}
               className={`px-6 py-2 rounded-xl transition-all duration-200 font-semibold ${
                 activeMode === 'personal' 
-                  ? 'bg-white dark:bg-slate-300 text-slate-900 shadow-md border border-slate-500' 
-                  : 'bg-transparent text-slate-300 hover:text-white hover:bg-slate-600/50 dark:hover:bg-slate-700/50'
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30 border border-blue-500' 
+                  : 'bg-transparent text-blue-200 hover:text-white hover:bg-blue-800/40'
               }`}
             >
               <Target className="w-4 h-4 mr-2" />
@@ -77,8 +77,8 @@ const Goals = () => {
               onClick={() => setActiveMode('work')}
               className={`px-6 py-2 rounded-xl transition-all duration-200 font-semibold ${
                 activeMode === 'work' 
-                  ? 'bg-white dark:bg-slate-300 text-slate-900 shadow-md border border-slate-500' 
-                  : 'bg-transparent text-slate-300 hover:text-white hover:bg-slate-600/50 dark:hover:bg-slate-700/50'
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30 border border-blue-500' 
+                  : 'bg-transparent text-blue-200 hover:text-white hover:bg-blue-800/40'
               }`}
             >
               <TrendingUp className="w-4 h-4 mr-2" />
@@ -100,18 +100,18 @@ const Goals = () => {
 
         {/* Goals Content */}
         {filteredGoals.length === 0 ? (
-          <Card className="bg-slate-800/95 dark:bg-slate-900/95 border border-slate-700/50 dark:border-slate-600/50 shadow-xl backdrop-blur-lg">
+          <Card className="bg-gradient-to-br from-slate-950/95 to-blue-950/95 border border-blue-800/30 shadow-2xl shadow-blue-900/30 backdrop-blur-xl">
             <CardContent className="p-12 text-center">
-              <Target className="w-16 h-16 text-slate-400 dark:text-slate-500 mx-auto mb-4" />
+              <Target className="w-16 h-16 text-blue-400 mx-auto mb-4" />
               <h3 className="text-xl font-semibold text-white mb-2 tracking-tight">
                 No {activeMode} goals yet
               </h3>
-              <p className="text-slate-300 dark:text-slate-400 mb-6 font-medium">
+              <p className="text-blue-200 mb-6 font-medium">
                 Create your first goal to start tracking your progress
               </p>
               <Button
                 onClick={() => setShowCreateForm(true)}
-                className="bg-slate-700 hover:bg-slate-600 dark:bg-slate-600 dark:hover:bg-slate-500 text-white font-semibold shadow-lg border border-slate-600/50"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-lg shadow-blue-500/30 border border-blue-500/50"
               >
                 <Plus className="w-4 h-4 mr-2" />
                 Create Goal

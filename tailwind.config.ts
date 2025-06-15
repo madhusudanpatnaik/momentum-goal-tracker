@@ -77,6 +77,10 @@ export default {
 					900: 'rgb(5 46 22)'
 				}
 			},
+			fontFamily: {
+				'geist': ['Geist', 'sans-serif'],
+				'archivo': ['Archivo', 'sans-serif'],
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { useNavigate } from 'react-router-dom';
@@ -15,162 +16,121 @@ const Landing = () => {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-royal-green-50 via-white to-royal-green-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
-      {/* Enhanced topological pattern with royal green */}
-      <div className="absolute inset-0 opacity-8">
-        {/* Main container - Topology with royal green */}
-        <div className="absolute w-[647px] h-[658px] left-[960px] top-[151px] border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl"></div>
-        
-        {/* Nested shapes creating spiral pattern */}
-        <div className="absolute w-[597px] h-[606px] left-[987px] top-[176px] border-2 border-royal-green-300 dark:border-royal-green-600 rounded-2xl"></div>
-        <div className="absolute w-[546px] h-[552px] left-[1014px] top-[202px] border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl"></div>
-        <div className="absolute w-[496px] h-[500px] left-[1041px] top-[227px] border-2 border-royal-green-300 dark:border-royal-green-600 rounded-2xl"></div>
-        <div className="absolute w-[446px] h-[448px] left-[1068px] top-[252px] border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl"></div>
-        <div className="absolute w-[395px] h-[395px] left-[1096px] top-[278px] border-2 border-royal-green-300 dark:border-royal-green-600 rounded-2xl"></div>
-        <div className="absolute w-[345px] h-[343px] left-[1123px] top-[303px] border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl"></div>
-        <div className="absolute w-[294px] h-[291px] left-[1150px] top-[328px] border-2 border-royal-green-300 dark:border-royal-green-600 rounded-2xl"></div>
-        
-        {/* Mirror pattern on the left side for balance */}
-        <div className="absolute w-[647px] h-[658px] left-[-400px] top-[300px] border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl transform rotate-45 opacity-40"></div>
-        <div className="absolute w-[546px] h-[552px] left-[-350px] top-[330px] border-2 border-royal-green-300 dark:border-royal-green-600 rounded-2xl transform rotate-45 opacity-30"></div>
-        <div className="absolute w-[446px] h-[448px] left-[-300px] top-[360px] border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl transform rotate-45 opacity-20"></div>
-      </div>
-
-      {/* Enhanced background pattern with royal green */}
-      <div className="absolute inset-0 opacity-15">
-        <svg
-          className="absolute inset-0 w-full h-full"
-          viewBox="0 0 1400 800"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M50 200C150 150, 250 250, 350 200C450 150, 550 300, 650 250C750 200, 850 350, 950 300C1050 250, 1150 400, 1250 350"
-            stroke="url(#royalGradient1)"
-            strokeWidth="3"
-            fill="none"
-            opacity="0.8"
-          />
-          <path
-            d="M100 400C200 350, 300 450, 400 400C500 350, 600 500, 700 450C800 400, 900 550, 1000 500C1100 450, 1200 600, 1300 550"
-            stroke="url(#royalGradient2)"
-            strokeWidth="2.5"
-            fill="none"
-            opacity="0.7"
-          />
-          
-          {/* Royal green nodes */}
-          <circle cx="150" cy="180" r="10" fill="url(#royalNodeGradient)" opacity="0.9" stroke="rgba(5, 46, 22, 0.3)" strokeWidth="2" />
-          <circle cx="350" cy="200" r="8" fill="url(#royalNodeGradient)" opacity="0.8" stroke="rgba(5, 46, 22, 0.3)" strokeWidth="2" />
-          <circle cx="650" cy="250" r="12" fill="url(#royalNodeGradient)" opacity="1" stroke="rgba(5, 46, 22, 0.3)" strokeWidth="2" />
-          <circle cx="950" cy="300" r="9" fill="url(#royalNodeGradient)" opacity="0.9" stroke="rgba(5, 46, 22, 0.3)" strokeWidth="2" />
-
-          <defs>
-            <linearGradient id="royalGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#052e16" />
-              <stop offset="50%" stopColor="#22c55e" />
-              <stop offset="100%" stopColor="#052e16" />
-            </linearGradient>
-            <linearGradient id="royalGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#22c55e" />
-              <stop offset="50%" stopColor="#052e16" />
-              <stop offset="100%" stopColor="#22c55e" />
-            </linearGradient>
-            <radialGradient id="royalNodeGradient">
-              <stop offset="0%" stopColor="#22c55e" />
-              <stop offset="100%" stopColor="#052e16" />
-            </radialGradient>
-          </defs>
-        </svg>
-      </div>
-
-      {/* Navigation with enhanced royal green styling */}
-      <nav className="relative z-10 flex items-center justify-between px-8 py-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border-b border-royal-green-200/50 dark:border-royal-green-700/50 shadow-sm">
-        <div className="text-3xl font-black text-royal-green-900 dark:text-royal-green-400 tracking-tight">
-          MOMENTUM
+    <div className="min-h-screen relative overflow-hidden bg-black">
+      {/* Decorative Line Patterns */}
+      <div className="absolute inset-0">
+        {/* Vertical lines on the right */}
+        <div className="absolute right-4 top-1/2 transform -translate-y-1/2 rotate-90 opacity-50">
+          <div className="flex gap-2.5">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <div key={i} className="w-[78px] h-[1px] bg-white transform rotate-90"></div>
+            ))}
+          </div>
         </div>
-        <div className="hidden md:flex items-center gap-8">
-          <span className="text-royal-green-700 dark:text-royal-green-300 hover:text-royal-green-900 dark:hover:text-royal-green-400 cursor-pointer transition-colors font-bold">Features</span>
-          <span className="text-royal-green-700 dark:text-royal-green-300 hover:text-royal-green-900 dark:hover:text-royal-green-400 cursor-pointer transition-colors font-bold">Pricing</span>
-          <span className="text-royal-green-700 dark:text-royal-green-300 hover:text-royal-green-900 dark:hover:text-royal-green-400 cursor-pointer transition-colors font-bold">Community</span>
-          <Button
-            variant="outline"
-            className="border-royal-green-300 dark:border-royal-green-600 text-royal-green-700 dark:text-royal-green-300 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30 font-bold border-2 transition-all duration-200"
-          >
-            Sign in
-          </Button>
+        
+        {/* Horizontal lines at the bottom */}
+        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 opacity-50">
+          <div className="flex gap-2.5">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <div key={i} className="w-[78px] h-[1px] bg-white"></div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Glassmorphism Navigation */}
+      <nav className="relative z-10 flex items-center justify-between px-8 py-6">
+        <div className="text-white font-geist font-medium text-lg tracking-wide">
+          MetricHub
+        </div>
+        
+        {/* Center Navigation Links */}
+        <div className="hidden md:flex items-center gap-6 bg-black/10 backdrop-blur-[20px] rounded-2xl px-6 py-3 border border-white/5">
+          <span className="text-white/80 hover:text-white cursor-pointer transition-colors font-geist font-light text-[17px] leading-[130%]">Product</span>
+          <span className="text-white/80 hover:text-white cursor-pointer transition-colors font-geist font-light text-[17px] leading-[130%]">Templates</span>
+          <span className="text-white/80 hover:text-white cursor-pointer transition-colors font-geist font-light text-[17px] leading-[130%]">Use Cases</span>
+          <span className="text-white/80 hover:text-white cursor-pointer transition-colors font-geist font-light text-[17px] leading-[130%]">Pricing</span>
+          <span className="text-white/80 hover:text-white cursor-pointer transition-colors font-geist font-light text-[17px] leading-[130%]">Docs</span>
+        </div>
+
+        {/* CTA Button */}
+        <div className="relative">
           <Button
             onClick={handleBookDemo}
-            className="gradient-royal-green hover:opacity-90 text-white px-6 py-2 rounded-lg font-bold shadow-lg transition-all duration-300"
+            className="relative bg-black/20 backdrop-blur-[20px] border border-blue-500/15 text-white px-6 py-3 rounded-2xl font-geist font-medium text-[17px] hover:bg-black/30 transition-all duration-300 shadow-[-15px_15px_54px_-20px_rgba(49,139,215,0.4)]"
           >
-            Book a demo
+            <span className="relative z-10">Get Started</span>
+            {/* Glowing orbs */}
+            <div className="absolute w-16 h-14 bg-[#5EB5FF]/40 opacity-80 blur-[27px] rounded-full right-2 top-1/2 transform -translate-y-1/2 translate-y-5"></div>
+            <div className="absolute w-[74px] h-14 bg-[#5EB5FF]/40 opacity-50 blur-[27px] rounded-full left-1 top-1/2 transform -translate-y-1/2 translate-y-2 scale-y-[-1]"></div>
           </Button>
         </div>
       </nav>
 
-      {/* Hero Section with enhanced royal green typography */}
-      <div className="relative z-10 container mx-auto px-8 py-20 text-center">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-royal-green-700 dark:text-royal-green-300 text-xl md:text-2xl mb-8 font-black tracking-wide uppercase">
-            Clarity and focus for your goals
-          </h1>
-          
-          <div className="relative mb-12">
-            <h2 className="text-6xl md:text-8xl lg:text-9xl font-black text-royal-green-900 dark:text-royal-green-400 leading-none mb-6 tracking-tighter">
-              Stay on track,<br />
-              <span className="text-royal-green-600 dark:text-royal-green-500">hit your targets</span>
-            </h2>
+      {/* Hero Section */}
+      <div className="relative z-10 container mx-auto px-8 pt-32 pb-20 text-center">
+        <div className="max-w-6xl mx-auto">
+          {/* Hero Title */}
+          <div className="relative mb-8">
+            <h1 className="font-archivo font-light text-6xl leading-[100%] tracking-[-0.03em] text-[#DDDDDD] mb-8">
+              Build better<br />
+              products faster
+            </h1>
           </div>
 
-          <p className="text-royal-green-700 dark:text-royal-green-300 text-xl md:text-2xl max-w-2xl mx-auto mb-12 leading-relaxed font-bold">
-            Built for action, built for success. For founders, entrepreneurs, and anyone ready to turn their biggest dreams into reality.
+          {/* Description */}
+          <p className="font-geist font-light text-[17px] leading-[130%] text-[#DDDDDD] max-w-md mx-auto mb-16">
+            The all-in-one platform for product teams to track metrics, analyze data, and make informed decisions.
           </p>
 
-          <Button
-            onClick={handleGetStarted}
-            className="gradient-royal-green hover:opacity-90 text-white px-10 py-5 text-xl rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 inline-flex items-center gap-3 font-black"
-          >
-            Get Started
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
-            </svg>
-          </Button>
+          {/* Main CTA */}
+          <div className="relative inline-block">
+            <Button
+              onClick={handleGetStarted}
+              className="relative bg-black/20 backdrop-blur-[10px] border border-blue-500/15 text-white px-8 py-4 rounded-2xl font-geist font-medium text-[17px] hover:bg-black/30 transition-all duration-300 shadow-[-15px_15px_54px_-20px_#318BD7]"
+            >
+              <span className="relative z-10">Start Building Today</span>
+              {/* Glowing orbs */}
+              <div className="absolute w-16 h-14 bg-[#5EB5FF] opacity-80 blur-[27px] rounded-full right-4 top-1/2 transform -translate-y-1/2 translate-y-5"></div>
+              <div className="absolute w-[74px] h-14 bg-[#5EB5FF] opacity-50 blur-[27px] rounded-full left-1 top-1/2 transform -translate-y-1/2 translate-y-2 scale-y-[-1]"></div>
+            </Button>
+          </div>
         </div>
       </div>
 
-      {/* Features Section with enhanced royal green cards */}
+      {/* Features Section with Dark Aesthetic */}
       <div className="relative z-10 container mx-auto px-8 py-20">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          <div className="bg-white dark:bg-slate-800 border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl p-8 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30 transition-all duration-300 hover:shadow-xl hover:border-royal-green-300 dark:hover:border-royal-green-600 hover:-translate-y-1">
-            <div className="w-16 h-16 bg-royal-green-100 dark:bg-royal-green-900/50 rounded-xl flex items-center justify-center mb-6 border-2 border-royal-green-200 dark:border-royal-green-600">
-              <Target className="w-8 h-8 text-royal-green-700 dark:text-royal-green-400" />
+          <div className="bg-black/20 backdrop-blur-[20px] border border-white/10 rounded-2xl p-8 hover:bg-black/30 transition-all duration-300 hover:border-blue-500/20">
+            <div className="w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6 border border-blue-500/30">
+              <Target className="w-8 h-8 text-blue-400" />
             </div>
-            <h3 className="text-royal-green-900 dark:text-royal-green-400 text-xl font-black mb-3 tracking-tight">Goal Tracking</h3>
-            <p className="text-royal-green-700 dark:text-royal-green-300 font-bold">Visualize progress with beautiful charts and milestone tracking.</p>
+            <h3 className="text-white font-geist font-medium text-xl mb-3">Goal Tracking</h3>
+            <p className="text-white/60 font-geist font-light">Visualize progress with beautiful charts and milestone tracking.</p>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl p-8 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30 transition-all duration-300 hover:shadow-xl hover:border-royal-green-300 dark:hover:border-royal-green-600 hover:-translate-y-1">
-            <div className="w-16 h-16 bg-royal-green-100 dark:bg-royal-green-900/50 rounded-xl flex items-center justify-center mb-6 border-2 border-royal-green-200 dark:border-royal-green-600">
-              <BarChart3 className="w-8 h-8 text-royal-green-700 dark:text-royal-green-400" />
+          <div className="bg-black/20 backdrop-blur-[20px] border border-white/10 rounded-2xl p-8 hover:bg-black/30 transition-all duration-300 hover:border-blue-500/20">
+            <div className="w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6 border border-blue-500/30">
+              <BarChart3 className="w-8 h-8 text-blue-400" />
             </div>
-            <h3 className="text-royal-green-900 dark:text-royal-green-400 text-xl font-black mb-3 tracking-tight">Data Analytics</h3>
-            <p className="text-royal-green-700 dark:text-royal-green-300 font-bold">Get insights with detailed analytics and performance metrics.</p>
+            <h3 className="text-white font-geist font-medium text-xl mb-3">Data Analytics</h3>
+            <p className="text-white/60 font-geist font-light">Get insights with detailed analytics and performance metrics.</p>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl p-8 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30 transition-all duration-300 hover:shadow-xl hover:border-royal-green-300 dark:hover:border-royal-green-600 hover:-translate-y-1">
-            <div className="w-16 h-16 bg-royal-green-100 dark:bg-royal-green-900/50 rounded-xl flex items-center justify-center mb-6 border-2 border-royal-green-200 dark:border-royal-green-600">
-              <TrendingUp className="w-8 h-8 text-royal-green-700 dark:text-royal-green-400" />
+          <div className="bg-black/20 backdrop-blur-[20px] border border-white/10 rounded-2xl p-8 hover:bg-black/30 transition-all duration-300 hover:border-blue-500/20">
+            <div className="w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6 border border-blue-500/30">
+              <TrendingUp className="w-8 h-8 text-blue-400" />
             </div>
-            <h3 className="text-royal-green-900 dark:text-royal-green-400 text-xl font-black mb-3 tracking-tight">Project Management</h3>
-            <p className="text-royal-green-700 dark:text-royal-green-300 font-bold">Organize SDLC and MVP tasks with customizable boards.</p>
+            <h3 className="text-white font-geist font-medium text-xl mb-3">Project Management</h3>
+            <p className="text-white/60 font-geist font-light">Organize SDLC and MVP tasks with customizable boards.</p>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl p-8 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30 transition-all duration-300 hover:shadow-xl hover:border-royal-green-300 dark:hover:border-royal-green-600 hover:-translate-y-1">
-            <div className="w-16 h-16 bg-royal-green-100 dark:bg-royal-green-900/50 rounded-xl flex items-center justify-center mb-6 border-2 border-royal-green-200 dark:border-royal-green-600">
-              <Zap className="w-8 h-8 text-royal-green-700 dark:text-royal-green-400" />
+          <div className="bg-black/20 backdrop-blur-[20px] border border-white/10 rounded-2xl p-8 hover:bg-black/30 transition-all duration-300 hover:border-blue-500/20">
+            <div className="w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6 border border-blue-500/30">
+              <Zap className="w-8 h-8 text-blue-400" />
             </div>
-            <h3 className="text-royal-green-900 dark:text-royal-green-400 text-xl font-black mb-3 tracking-tight">Smart Reminders</h3>
-            <p className="text-royal-green-700 dark:text-royal-green-300 font-bold">Stay motivated with daily nudges and achievement tracking.</p>
+            <h3 className="text-white font-geist font-medium text-xl mb-3">Smart Reminders</h3>
+            <p className="text-white/60 font-geist font-light">Stay motivated with daily nudges and achievement tracking.</p>
           </div>
         </div>
       </div>
@@ -178,10 +138,10 @@ const Landing = () => {
       {/* Connect with Developer Section */}
       <div className="relative z-10 container mx-auto px-8 py-16">
         <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-3xl md:text-4xl font-black text-royal-green-900 dark:text-royal-green-400 mb-8 tracking-tight">
+          <h3 className="font-archivo font-light text-3xl md:text-4xl text-white mb-8">
             Connect with the Developer
           </h3>
-          <p className="text-royal-green-700 dark:text-royal-green-300 text-lg mb-8 font-bold">
+          <p className="text-white/60 font-geist font-light text-lg mb-8">
             Built with passion by Madhusudan Patnaik. Connect with me for collaboration, feedback, or just to say hello!
           </p>
           <div className="flex justify-center gap-6">
@@ -189,39 +149,41 @@ const Landing = () => {
               href="https://www.linkedin.com/in/madhusudanpatnaik/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-white dark:bg-slate-800 border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl px-8 py-4 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30 transition-all duration-300 hover:shadow-xl hover:border-royal-green-300 dark:hover:border-royal-green-600 hover:-translate-y-1"
+              className="flex items-center gap-3 bg-black/20 backdrop-blur-[20px] border border-white/10 rounded-2xl px-8 py-4 hover:bg-black/30 transition-all duration-300 hover:border-blue-500/20"
             >
-              <Linkedin className="w-6 h-6 text-royal-green-700 dark:text-royal-green-400" />
-              <span className="text-royal-green-900 dark:text-royal-green-400 font-bold">LinkedIn</span>
+              <Linkedin className="w-6 h-6 text-blue-400" />
+              <span className="text-white font-geist font-medium">LinkedIn</span>
             </a>
             <a
               href="https://x.com/madhusudan91263"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-white dark:bg-slate-800 border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl px-8 py-4 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30 transition-all duration-300 hover:shadow-xl hover:border-royal-green-300 dark:hover:border-royal-green-600 hover:-translate-y-1"
+              className="flex items-center gap-3 bg-black/20 backdrop-blur-[20px] border border-white/10 rounded-2xl px-8 py-4 hover:bg-black/30 transition-all duration-300 hover:border-blue-500/20"
             >
-              <Twitter className="w-6 h-6 text-royal-green-700 dark:text-royal-green-400" />
-              <span className="text-royal-green-900 dark:text-royal-green-400 font-bold">X (Twitter)</span>
+              <Twitter className="w-6 h-6 text-blue-400" />
+              <span className="text-white font-geist font-medium">X (Twitter)</span>
             </a>
           </div>
         </div>
       </div>
 
-      {/* CTA Section with enhanced royal green contrast */}
+      {/* Final CTA Section */}
       <div className="relative z-10 container mx-auto px-8 py-20">
-        <div className="gradient-royal-green rounded-3xl p-12 text-center max-w-4xl mx-auto shadow-2xl border-2 border-royal-green-600">
-          <h3 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+        <div className="bg-black/30 backdrop-blur-[20px] border border-blue-500/20 rounded-3xl p-12 text-center max-w-4xl mx-auto">
+          <h3 className="font-archivo font-light text-4xl md:text-5xl text-white mb-4">
             Ready to build momentum?
           </h3>
-          <p className="text-royal-green-100 text-xl mb-8 font-bold">
-            Join thousands of founders and individuals achieving their goals with clarity and focus.
+          <p className="text-white/60 font-geist font-light text-xl mb-8">
+            Join thousands of product teams building better experiences.
           </p>
-          <Button
-            onClick={handleGetStarted}
-            className="bg-white text-royal-green-900 hover:bg-royal-green-50 px-10 py-5 text-xl rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 font-black border-2 border-royal-green-200"
-          >
-            Start Your Journey
-          </Button>
+          <div className="relative inline-block">
+            <Button
+              onClick={handleGetStarted}
+              className="relative bg-white/10 backdrop-blur-[10px] border border-white/20 text-white px-10 py-5 text-xl rounded-2xl hover:bg-white/20 transition-all duration-300 font-geist font-medium"
+            >
+              <span className="relative z-10">Start Your Journey</span>
+            </Button>
+          </div>
         </div>
       </div>
     </div>

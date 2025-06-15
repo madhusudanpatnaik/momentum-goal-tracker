@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { useNavigate } from 'react-router-dom';
-import { Target, TrendingUp, BarChart3, Zap } from 'lucide-react';
+import { Target, TrendingUp, BarChart3, Zap, Linkedin, Twitter } from 'lucide-react';
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -172,6 +171,38 @@ const Landing = () => {
             </div>
             <h3 className="text-royal-green-900 dark:text-royal-green-400 text-xl font-black mb-3 tracking-tight">Smart Reminders</h3>
             <p className="text-royal-green-700 dark:text-royal-green-300 font-bold">Stay motivated with daily nudges and achievement tracking.</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Connect with Developer Section */}
+      <div className="relative z-10 container mx-auto px-8 py-16">
+        <div className="max-w-4xl mx-auto text-center">
+          <h3 className="text-3xl md:text-4xl font-black text-royal-green-900 dark:text-royal-green-400 mb-8 tracking-tight">
+            Connect with the Developer
+          </h3>
+          <p className="text-royal-green-700 dark:text-royal-green-300 text-lg mb-8 font-bold">
+            Built with passion by Madhusudan Patnaik. Connect with me for collaboration, feedback, or just to say hello!
+          </p>
+          <div className="flex justify-center gap-6">
+            <a
+              href="https://www.linkedin.com/in/madhusudanpatnaik/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 bg-white dark:bg-slate-800 border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl px-8 py-4 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30 transition-all duration-300 hover:shadow-xl hover:border-royal-green-300 dark:hover:border-royal-green-600 hover:-translate-y-1"
+            >
+              <Linkedin className="w-6 h-6 text-royal-green-700 dark:text-royal-green-400" />
+              <span className="text-royal-green-900 dark:text-royal-green-400 font-bold">LinkedIn</span>
+            </a>
+            <a
+              href="https://x.com/madhusudan91263"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 bg-white dark:bg-slate-800 border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl px-8 py-4 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30 transition-all duration-300 hover:shadow-xl hover:border-royal-green-300 dark:hover:border-royal-green-600 hover:-translate-y-1"
+            >
+              <Twitter className="w-6 h-6 text-royal-green-700 dark:text-royal-green-400" />
+              <span className="text-royal-green-900 dark:text-royal-green-400 font-bold">X (Twitter)</span>
+            </a>
           </div>
         </div>
       </div>

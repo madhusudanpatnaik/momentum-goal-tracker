@@ -50,9 +50,11 @@ export const useAnalyticsRealtime = (goals: Goal[]) => {
       const date = new Date();
       date.setDate(date.getDate() - (89 - i));
       
+      // Calculate time progress for this day (0 to 1)
+      const timeProgress = i / 89;
+      
       // Simulate realistic progress growth
       const dayProgress = goals.reduce((sum, goal) => {
-        const timeProgress = i / 89; // 0 to 1
         const goalProgress = Math.min(100, (goal.currentAmount / goal.targetAmount) * 100 * timeProgress);
         return sum + goalProgress;
       }, 0);
@@ -97,7 +99,8 @@ export const useAnalyticsRealtime = (goals: Goal[]) => {
     
     const categoryBreakdown = Object.entries(categoryData).map(([name, data]) => {
       const percentage = totalValue > 0 ? (data.value / totalValue) * 100 : 0;
-      const trend = Math.random() > 0.6 ? 'up' : Math.random() > 0.3 ? 'stable' : 'down';
+      const randomValue = Math.random();
+      const trend: 'up' | 'down' | 'stable' = randomValue > 0.6 ? 'up' : randomValue > 0.3 ? 'stable' : 'down';
       
       return {
         name: name.charAt(0).toUpperCase() + name.slice(1),

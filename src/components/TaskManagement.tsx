@@ -71,24 +71,24 @@ export const TaskManagement: React.FC<TaskManagementProps> = ({
 
   const getStatusColor = (status: SDLCTask['status']) => {
     switch (status) {
-      case 'completed': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
-      case 'in-progress': return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
-      case 'blocked': return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200';
-      case 'on-hold': return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200';
-      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200';
+      case 'completed': return 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-200';
+      case 'in-progress': return 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-200';
+      case 'blocked': return 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-200';
+      case 'on-hold': return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-200';
+      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-700/30 dark:text-gray-200';
     }
   };
 
   const getCategoryColor = (category: SDLCTask['category']) => {
     switch (category) {
-      case 'development': return 'bg-blue-50 text-blue-700 dark:bg-blue-900 dark:text-blue-200';
-      case 'design': return 'bg-purple-50 text-purple-700 dark:bg-purple-900 dark:text-purple-200';
-      case 'testing': return 'bg-green-50 text-green-700 dark:bg-green-900 dark:text-green-200';
-      case 'deployment': return 'bg-orange-50 text-orange-700 dark:bg-orange-900 dark:text-orange-200';
-      case 'research': return 'bg-pink-50 text-pink-700 dark:bg-pink-900 dark:text-pink-200';
-      case 'marketing': return 'bg-yellow-50 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-200';
-      case 'management': return 'bg-gray-50 text-gray-700 dark:bg-gray-700 dark:text-gray-200';
-      default: return 'bg-gray-50 text-gray-700 dark:bg-gray-700 dark:text-gray-200';
+      case 'development': return 'bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-200';
+      case 'design': return 'bg-purple-50 text-purple-700 dark:bg-purple-900/30 dark:text-purple-200';
+      case 'testing': return 'bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-200';
+      case 'deployment': return 'bg-orange-50 text-orange-700 dark:bg-orange-900/30 dark:text-orange-200';
+      case 'research': return 'bg-pink-50 text-pink-700 dark:bg-pink-900/30 dark:text-pink-200';
+      case 'marketing': return 'bg-yellow-50 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-200';
+      case 'management': return 'bg-gray-50 text-gray-700 dark:bg-gray-700/30 dark:text-gray-200';
+      default: return 'bg-gray-50 text-gray-700 dark:bg-gray-700/30 dark:text-gray-200';
     }
   };
 
@@ -136,9 +136,9 @@ export const TaskManagement: React.FC<TaskManagementProps> = ({
   return (
     <div className="space-y-6">
       {/* Filters and Search */}
-      <Card>
+      <Card className="bg-slate-900/80 backdrop-blur-xl border-blue-700/30 shadow-xl shadow-blue-900/20">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+          <CardTitle className="flex items-center gap-2 text-white">
             <Filter className="w-5 h-5" />
             Task Filters
           </CardTitle>
@@ -146,52 +146,52 @@ export const TaskManagement: React.FC<TaskManagementProps> = ({
         <CardContent>
           <div className="flex flex-wrap gap-4">
             <div className="flex items-center gap-2">
-              <Search className="w-4 h-4 text-gray-500" />
+              <Search className="w-4 h-4 text-blue-300" />
               <input
                 type="text"
                 placeholder="Search tasks..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="px-3 py-2 border rounded-lg text-sm bg-white dark:bg-slate-800 dark:border-slate-600 dark:text-white"
+                className="px-3 py-2 border border-blue-700/30 rounded-lg text-sm bg-slate-800/60 backdrop-blur text-white placeholder-blue-300"
               />
             </div>
             
             <Select value={filter} onValueChange={(value) => setFilter(value as any)}>
-              <SelectTrigger className="w-[180px] bg-white dark:bg-slate-800">
+              <SelectTrigger className="w-[180px] bg-slate-800/60 backdrop-blur border-blue-700/30 text-white">
                 <SelectValue placeholder="Filter tasks" />
               </SelectTrigger>
-              <SelectContent className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-600">
-                <SelectItem value="all">All Tasks</SelectItem>
-                <SelectItem value="my-tasks">My Tasks</SelectItem>
-                <SelectItem value="overdue">Overdue</SelectItem>
-                <SelectItem value="blocked">Blocked</SelectItem>
+              <SelectContent className="bg-slate-800/95 backdrop-blur border border-blue-700/30">
+                <SelectItem value="all" className="text-white hover:bg-blue-700/30">All Tasks</SelectItem>
+                <SelectItem value="my-tasks" className="text-white hover:bg-blue-700/30">My Tasks</SelectItem>
+                <SelectItem value="overdue" className="text-white hover:bg-blue-700/30">Overdue</SelectItem>
+                <SelectItem value="blocked" className="text-white hover:bg-blue-700/30">Blocked</SelectItem>
               </SelectContent>
             </Select>
 
             <Select value={selectedPriority} onValueChange={setSelectedPriority}>
-              <SelectTrigger className="w-[180px] bg-white dark:bg-slate-800">
+              <SelectTrigger className="w-[180px] bg-slate-800/60 backdrop-blur border-blue-700/30 text-white">
                 <SelectValue placeholder="All Priorities" />
               </SelectTrigger>
-              <SelectContent className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-600">
-                <SelectItem value="all">All Priorities</SelectItem>
-                <SelectItem value="critical">Critical</SelectItem>
-                <SelectItem value="high">High</SelectItem>
-                <SelectItem value="medium">Medium</SelectItem>
-                <SelectItem value="low">Low</SelectItem>
+              <SelectContent className="bg-slate-800/95 backdrop-blur border border-blue-700/30">
+                <SelectItem value="all" className="text-white hover:bg-blue-700/30">All Priorities</SelectItem>
+                <SelectItem value="critical" className="text-white hover:bg-blue-700/30">Critical</SelectItem>
+                <SelectItem value="high" className="text-white hover:bg-blue-700/30">High</SelectItem>
+                <SelectItem value="medium" className="text-white hover:bg-blue-700/30">Medium</SelectItem>
+                <SelectItem value="low" className="text-white hover:bg-blue-700/30">Low</SelectItem>
               </SelectContent>
             </Select>
 
             <Select value={selectedStatus} onValueChange={setSelectedStatus}>
-              <SelectTrigger className="w-[180px] bg-white dark:bg-slate-800">
+              <SelectTrigger className="w-[180px] bg-slate-800/60 backdrop-blur border-blue-700/30 text-white">
                 <SelectValue placeholder="All Statuses" />
               </SelectTrigger>
-              <SelectContent className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-600">
-                <SelectItem value="all">All Statuses</SelectItem>
-                <SelectItem value="not-started">Not Started</SelectItem>
-                <SelectItem value="in-progress">In Progress</SelectItem>
-                <SelectItem value="completed">Completed</SelectItem>
-                <SelectItem value="blocked">Blocked</SelectItem>
-                <SelectItem value="on-hold">On Hold</SelectItem>
+              <SelectContent className="bg-slate-800/95 backdrop-blur border border-blue-700/30">
+                <SelectItem value="all" className="text-white hover:bg-blue-700/30">All Statuses</SelectItem>
+                <SelectItem value="not-started" className="text-white hover:bg-blue-700/30">Not Started</SelectItem>
+                <SelectItem value="in-progress" className="text-white hover:bg-blue-700/30">In Progress</SelectItem>
+                <SelectItem value="completed" className="text-white hover:bg-blue-700/30">Completed</SelectItem>
+                <SelectItem value="blocked" className="text-white hover:bg-blue-700/30">Blocked</SelectItem>
+                <SelectItem value="on-hold" className="text-white hover:bg-blue-700/30">On Hold</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -200,47 +200,47 @@ export const TaskManagement: React.FC<TaskManagementProps> = ({
 
       {/* Task Summary */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card>
+        <Card className="bg-slate-900/80 backdrop-blur-xl border-blue-700/30 shadow-xl shadow-blue-900/20">
           <CardContent className="p-4">
-            <div className="text-2xl font-bold">{tasks.length}</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Total Tasks</div>
+            <div className="text-2xl font-bold text-white">{tasks.length}</div>
+            <div className="text-sm text-blue-200">Total Tasks</div>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-slate-900/80 backdrop-blur-xl border-blue-700/30 shadow-xl shadow-blue-900/20">
           <CardContent className="p-4">
-            <div className="text-2xl font-bold text-green-600">
+            <div className="text-2xl font-bold text-green-400">
               {tasks.filter(t => t.status === 'completed').length}
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Completed</div>
+            <div className="text-sm text-blue-200">Completed</div>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-slate-900/80 backdrop-blur-xl border-blue-700/30 shadow-xl shadow-blue-900/20">
           <CardContent className="p-4">
-            <div className="text-2xl font-bold text-blue-600">
+            <div className="text-2xl font-bold text-blue-400">
               {tasks.filter(t => t.status === 'in-progress').length}
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">In Progress</div>
+            <div className="text-sm text-blue-200">In Progress</div>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-slate-900/80 backdrop-blur-xl border-blue-700/30 shadow-xl shadow-blue-900/20">
           <CardContent className="p-4">
-            <div className="text-2xl font-bold text-red-600">
+            <div className="text-2xl font-bold text-red-400">
               {tasks.filter(t => isOverdue(t.dueDate, t.status)).length}
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Overdue</div>
+            <div className="text-sm text-blue-200">Overdue</div>
           </CardContent>
         </Card>
       </div>
 
       {/* Task List */}
-      <Card>
+      <Card className="bg-slate-900/80 backdrop-blur-xl border-blue-700/30 shadow-xl shadow-blue-900/20">
         <CardHeader>
-          <CardTitle>Tasks ({filteredTasks.length})</CardTitle>
+          <CardTitle className="text-white">Tasks ({filteredTasks.length})</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             {filteredTasks.map((task) => (
-              <div key={task.id} className="border rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors dark:border-slate-600">
+              <div key={task.id} className="border border-blue-700/30 rounded-lg p-4 hover:bg-slate-800/60 transition-colors backdrop-blur">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
@@ -248,14 +248,14 @@ export const TaskManagement: React.FC<TaskManagementProps> = ({
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
                           {getStatusIcon(task.status)}
-                          <h4 className="font-medium dark:text-white">{task.title}</h4>
+                          <h4 className="font-medium text-white">{task.title}</h4>
                           {isOverdue(task.dueDate, task.status) && (
                             <Badge variant="destructive" className="text-xs">Overdue</Badge>
                           )}
                         </div>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{task.description}</p>
+                        <p className="text-sm text-blue-200 mb-2">{task.description}</p>
                         
-                        <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
+                        <div className="flex items-center gap-4 text-xs text-blue-300">
                           <div className="flex items-center gap-1">
                             <Clock className="w-3 h-3" />
                             {task.estimatedHours}h estimated
@@ -285,27 +285,27 @@ export const TaskManagement: React.FC<TaskManagementProps> = ({
                     
                     {/* Status Dropdown */}
                     <Select value={task.status} onValueChange={(value) => handleStatusChange(task.id, value)}>
-                      <SelectTrigger className="w-[120px] h-8 text-xs bg-white dark:bg-slate-800 border-gray-300 dark:border-slate-600">
+                      <SelectTrigger className="w-[120px] h-8 text-xs bg-slate-800/60 backdrop-blur border-blue-700/30 text-white">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-600 z-50">
-                        <SelectItem value="not-started">Not Started</SelectItem>
-                        <SelectItem value="in-progress">In Progress</SelectItem>
-                        <SelectItem value="completed">Completed</SelectItem>
-                        <SelectItem value="blocked">Blocked</SelectItem>
-                        <SelectItem value="on-hold">On Hold</SelectItem>
+                      <SelectContent className="bg-slate-800/95 backdrop-blur border border-blue-700/30 z-50">
+                        <SelectItem value="not-started" className="text-white hover:bg-blue-700/30">Not Started</SelectItem>
+                        <SelectItem value="in-progress" className="text-white hover:bg-blue-700/30">In Progress</SelectItem>
+                        <SelectItem value="completed" className="text-white hover:bg-blue-700/30">Completed</SelectItem>
+                        <SelectItem value="blocked" className="text-white hover:bg-blue-700/30">Blocked</SelectItem>
+                        <SelectItem value="on-hold" className="text-white hover:bg-blue-700/30">On Hold</SelectItem>
                       </SelectContent>
                     </Select>
                     
                     {/* Assignee Dropdown */}
                     <Select value={task.assignee || ''} onValueChange={(value) => handleAssigneeChange(task.id, value)}>
-                      <SelectTrigger className="w-[140px] h-8 text-xs bg-white dark:bg-slate-800 border-gray-300 dark:border-slate-600">
+                      <SelectTrigger className="w-[140px] h-8 text-xs bg-slate-800/60 backdrop-blur border-blue-700/30 text-white">
                         <SelectValue placeholder="Unassigned" />
                       </SelectTrigger>
-                      <SelectContent className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-600 z-50">
-                        <SelectItem value="">Unassigned</SelectItem>
+                      <SelectContent className="bg-slate-800/95 backdrop-blur border border-blue-700/30 z-50">
+                        <SelectItem value="" className="text-white hover:bg-blue-700/30">Unassigned</SelectItem>
                         {teamMembers.map(member => (
-                          <SelectItem key={member.id} value={member.id}>
+                          <SelectItem key={member.id} value={member.id} className="text-white hover:bg-blue-700/30">
                             {member.name}
                           </SelectItem>
                         ))}
@@ -315,25 +315,25 @@ export const TaskManagement: React.FC<TaskManagementProps> = ({
                     {/* Task Actions Dropdown */}
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                        <Button variant="ghost" size="sm" className="h-8 w-8 p-0 text-blue-200 hover:bg-blue-700/30">
                           <MoreVertical className="h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end" className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-600 z-50">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem onClick={() => console.log('Edit task:', task.id)} className="hover:bg-gray-100 dark:hover:bg-slate-700">
+                      <DropdownMenuContent align="end" className="bg-slate-800/95 backdrop-blur border border-blue-700/30 z-50">
+                        <DropdownMenuLabel className="text-white">Actions</DropdownMenuLabel>
+                        <DropdownMenuSeparator className="bg-blue-700/30" />
+                        <DropdownMenuItem onClick={() => console.log('Edit task:', task.id)} className="text-white hover:bg-blue-700/30">
                           <Edit className="mr-2 h-4 w-4" />
                           Edit Task
                         </DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => console.log('Assign task:', task.id)} className="hover:bg-gray-100 dark:hover:bg-slate-700">
+                        <DropdownMenuItem onClick={() => console.log('Assign task:', task.id)} className="text-white hover:bg-blue-700/30">
                           <UserPlus className="mr-2 h-4 w-4" />
                           Reassign
                         </DropdownMenuItem>
-                        <DropdownMenuSeparator />
+                        <DropdownMenuSeparator className="bg-blue-700/30" />
                         <DropdownMenuItem 
                           onClick={() => console.log('Delete task:', task.id)} 
-                          className="text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20"
+                          className="text-red-400 hover:bg-red-900/30"
                         >
                           <Trash2 className="mr-2 h-4 w-4" />
                           Delete Task
@@ -346,7 +346,7 @@ export const TaskManagement: React.FC<TaskManagementProps> = ({
                 {task.tags.length > 0 && (
                   <div className="flex flex-wrap gap-1 mt-2">
                     {task.tags.map(tag => (
-                      <Badge key={tag} variant="outline" className="text-xs">
+                      <Badge key={tag} variant="outline" className="text-xs border-blue-700/50 text-blue-300">
                         {tag}
                       </Badge>
                     ))}
@@ -356,7 +356,7 @@ export const TaskManagement: React.FC<TaskManagementProps> = ({
             ))}
             
             {filteredTasks.length === 0 && (
-              <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+              <div className="text-center py-8 text-blue-300">
                 No tasks match the current filters
               </div>
             )}

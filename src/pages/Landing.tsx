@@ -16,25 +16,25 @@ const Landing = () => {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-white via-royal-green-50 to-royal-green-100">
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-royal-green-50 via-white to-royal-green-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
       {/* Enhanced topological pattern with royal green */}
       <div className="absolute inset-0 opacity-8">
         {/* Main container - Topology with royal green */}
-        <div className="absolute w-[647px] h-[658px] left-[960px] top-[151px] border-2 border-royal-green-200 rounded-2xl"></div>
+        <div className="absolute w-[647px] h-[658px] left-[960px] top-[151px] border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl"></div>
         
         {/* Nested shapes creating spiral pattern */}
-        <div className="absolute w-[597px] h-[606px] left-[987px] top-[176px] border-2 border-royal-green-300 rounded-2xl"></div>
-        <div className="absolute w-[546px] h-[552px] left-[1014px] top-[202px] border-2 border-royal-green-200 rounded-2xl"></div>
-        <div className="absolute w-[496px] h-[500px] left-[1041px] top-[227px] border-2 border-royal-green-300 rounded-2xl"></div>
-        <div className="absolute w-[446px] h-[448px] left-[1068px] top-[252px] border-2 border-royal-green-200 rounded-2xl"></div>
-        <div className="absolute w-[395px] h-[395px] left-[1096px] top-[278px] border-2 border-royal-green-300 rounded-2xl"></div>
-        <div className="absolute w-[345px] h-[343px] left-[1123px] top-[303px] border-2 border-royal-green-200 rounded-2xl"></div>
-        <div className="absolute w-[294px] h-[291px] left-[1150px] top-[328px] border-2 border-royal-green-300 rounded-2xl"></div>
+        <div className="absolute w-[597px] h-[606px] left-[987px] top-[176px] border-2 border-royal-green-300 dark:border-royal-green-600 rounded-2xl"></div>
+        <div className="absolute w-[546px] h-[552px] left-[1014px] top-[202px] border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl"></div>
+        <div className="absolute w-[496px] h-[500px] left-[1041px] top-[227px] border-2 border-royal-green-300 dark:border-royal-green-600 rounded-2xl"></div>
+        <div className="absolute w-[446px] h-[448px] left-[1068px] top-[252px] border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl"></div>
+        <div className="absolute w-[395px] h-[395px] left-[1096px] top-[278px] border-2 border-royal-green-300 dark:border-royal-green-600 rounded-2xl"></div>
+        <div className="absolute w-[345px] h-[343px] left-[1123px] top-[303px] border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl"></div>
+        <div className="absolute w-[294px] h-[291px] left-[1150px] top-[328px] border-2 border-royal-green-300 dark:border-royal-green-600 rounded-2xl"></div>
         
         {/* Mirror pattern on the left side for balance */}
-        <div className="absolute w-[647px] h-[658px] left-[-400px] top-[300px] border-2 border-royal-green-200 rounded-2xl transform rotate-45 opacity-40"></div>
-        <div className="absolute w-[546px] h-[552px] left-[-350px] top-[330px] border-2 border-royal-green-300 rounded-2xl transform rotate-45 opacity-30"></div>
-        <div className="absolute w-[446px] h-[448px] left-[-300px] top-[360px] border-2 border-royal-green-200 rounded-2xl transform rotate-45 opacity-20"></div>
+        <div className="absolute w-[647px] h-[658px] left-[-400px] top-[300px] border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl transform rotate-45 opacity-40"></div>
+        <div className="absolute w-[546px] h-[552px] left-[-350px] top-[330px] border-2 border-royal-green-300 dark:border-royal-green-600 rounded-2xl transform rotate-45 opacity-30"></div>
+        <div className="absolute w-[446px] h-[448px] left-[-300px] top-[360px] border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl transform rotate-45 opacity-20"></div>
       </div>
 
       {/* Enhanced background pattern with royal green */}
@@ -86,17 +86,17 @@ const Landing = () => {
       </div>
 
       {/* Navigation with enhanced royal green styling */}
-      <nav className="relative z-10 flex items-center justify-between px-8 py-6 bg-white/90 backdrop-blur-sm border-b border-royal-green-200/50 shadow-sm">
-        <div className="text-3xl font-black text-royal-green-900 tracking-tight">
+      <nav className="relative z-10 flex items-center justify-between px-8 py-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border-b border-royal-green-200/50 dark:border-royal-green-700/50 shadow-sm">
+        <div className="text-3xl font-black text-royal-green-900 dark:text-royal-green-400 tracking-tight">
           MOMENTUM
         </div>
         <div className="hidden md:flex items-center gap-8">
-          <span className="text-royal-green-700 hover:text-royal-green-900 cursor-pointer transition-colors font-bold">Features</span>
-          <span className="text-royal-green-700 hover:text-royal-green-900 cursor-pointer transition-colors font-bold">Pricing</span>
-          <span className="text-royal-green-700 hover:text-royal-green-900 cursor-pointer transition-colors font-bold">Community</span>
+          <span className="text-royal-green-700 dark:text-royal-green-300 hover:text-royal-green-900 dark:hover:text-royal-green-400 cursor-pointer transition-colors font-bold">Features</span>
+          <span className="text-royal-green-700 dark:text-royal-green-300 hover:text-royal-green-900 dark:hover:text-royal-green-400 cursor-pointer transition-colors font-bold">Pricing</span>
+          <span className="text-royal-green-700 dark:text-royal-green-300 hover:text-royal-green-900 dark:hover:text-royal-green-400 cursor-pointer transition-colors font-bold">Community</span>
           <Button
             variant="outline"
-            className="border-royal-green-300 text-royal-green-700 hover:bg-royal-green-50 font-bold border-2 transition-all duration-200"
+            className="border-royal-green-300 dark:border-royal-green-600 text-royal-green-700 dark:text-royal-green-300 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30 font-bold border-2 transition-all duration-200"
           >
             Sign in
           </Button>
@@ -112,18 +112,18 @@ const Landing = () => {
       {/* Hero Section with enhanced royal green typography */}
       <div className="relative z-10 container mx-auto px-8 py-20 text-center">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-royal-green-700 text-xl md:text-2xl mb-8 font-black tracking-wide uppercase">
+          <h1 className="text-royal-green-700 dark:text-royal-green-300 text-xl md:text-2xl mb-8 font-black tracking-wide uppercase">
             Clarity and focus for your goals
           </h1>
           
           <div className="relative mb-12">
-            <h2 className="text-6xl md:text-8xl lg:text-9xl font-black text-royal-green-900 leading-none mb-6 tracking-tighter">
+            <h2 className="text-6xl md:text-8xl lg:text-9xl font-black text-royal-green-900 dark:text-royal-green-400 leading-none mb-6 tracking-tighter">
               Stay on track,<br />
-              <span className="text-royal-green-600">hit your targets</span>
+              <span className="text-royal-green-600 dark:text-royal-green-500">hit your targets</span>
             </h2>
           </div>
 
-          <p className="text-royal-green-700 text-xl md:text-2xl max-w-2xl mx-auto mb-12 leading-relaxed font-bold">
+          <p className="text-royal-green-700 dark:text-royal-green-300 text-xl md:text-2xl max-w-2xl mx-auto mb-12 leading-relaxed font-bold">
             Built for action, built for success. For founders, entrepreneurs, and anyone ready to turn their biggest dreams into reality.
           </p>
 
@@ -142,36 +142,36 @@ const Landing = () => {
       {/* Features Section with enhanced royal green cards */}
       <div className="relative z-10 container mx-auto px-8 py-20">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          <div className="bg-white border-2 border-royal-green-200 rounded-2xl p-8 hover:bg-royal-green-50 transition-all duration-300 hover:shadow-xl hover:border-royal-green-300 hover:-translate-y-1">
-            <div className="w-16 h-16 bg-royal-green-100 rounded-xl flex items-center justify-center mb-6 border-2 border-royal-green-200">
-              <Target className="w-8 h-8 text-royal-green-700" />
+          <div className="bg-white dark:bg-slate-800 border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl p-8 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30 transition-all duration-300 hover:shadow-xl hover:border-royal-green-300 dark:hover:border-royal-green-600 hover:-translate-y-1">
+            <div className="w-16 h-16 bg-royal-green-100 dark:bg-royal-green-900/50 rounded-xl flex items-center justify-center mb-6 border-2 border-royal-green-200 dark:border-royal-green-600">
+              <Target className="w-8 h-8 text-royal-green-700 dark:text-royal-green-400" />
             </div>
-            <h3 className="text-royal-green-900 text-xl font-black mb-3 tracking-tight">Goal Tracking</h3>
-            <p className="text-royal-green-700 font-bold">Visualize progress with beautiful charts and milestone tracking.</p>
+            <h3 className="text-royal-green-900 dark:text-royal-green-400 text-xl font-black mb-3 tracking-tight">Goal Tracking</h3>
+            <p className="text-royal-green-700 dark:text-royal-green-300 font-bold">Visualize progress with beautiful charts and milestone tracking.</p>
           </div>
 
-          <div className="bg-white border-2 border-royal-green-200 rounded-2xl p-8 hover:bg-royal-green-50 transition-all duration-300 hover:shadow-xl hover:border-royal-green-300 hover:-translate-y-1">
-            <div className="w-16 h-16 bg-royal-green-100 rounded-xl flex items-center justify-center mb-6 border-2 border-royal-green-200">
-              <BarChart3 className="w-8 h-8 text-royal-green-700" />
+          <div className="bg-white dark:bg-slate-800 border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl p-8 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30 transition-all duration-300 hover:shadow-xl hover:border-royal-green-300 dark:hover:border-royal-green-600 hover:-translate-y-1">
+            <div className="w-16 h-16 bg-royal-green-100 dark:bg-royal-green-900/50 rounded-xl flex items-center justify-center mb-6 border-2 border-royal-green-200 dark:border-royal-green-600">
+              <BarChart3 className="w-8 h-8 text-royal-green-700 dark:text-royal-green-400" />
             </div>
-            <h3 className="text-royal-green-900 text-xl font-black mb-3 tracking-tight">Data Analytics</h3>
-            <p className="text-royal-green-700 font-bold">Get insights with detailed analytics and performance metrics.</p>
+            <h3 className="text-royal-green-900 dark:text-royal-green-400 text-xl font-black mb-3 tracking-tight">Data Analytics</h3>
+            <p className="text-royal-green-700 dark:text-royal-green-300 font-bold">Get insights with detailed analytics and performance metrics.</p>
           </div>
 
-          <div className="bg-white border-2 border-royal-green-200 rounded-2xl p-8 hover:bg-royal-green-50 transition-all duration-300 hover:shadow-xl hover:border-royal-green-300 hover:-translate-y-1">
-            <div className="w-16 h-16 bg-royal-green-100 rounded-xl flex items-center justify-center mb-6 border-2 border-royal-green-200">
-              <TrendingUp className="w-8 h-8 text-royal-green-700" />
+          <div className="bg-white dark:bg-slate-800 border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl p-8 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30 transition-all duration-300 hover:shadow-xl hover:border-royal-green-300 dark:hover:border-royal-green-600 hover:-translate-y-1">
+            <div className="w-16 h-16 bg-royal-green-100 dark:bg-royal-green-900/50 rounded-xl flex items-center justify-center mb-6 border-2 border-royal-green-200 dark:border-royal-green-600">
+              <TrendingUp className="w-8 h-8 text-royal-green-700 dark:text-royal-green-400" />
             </div>
-            <h3 className="text-royal-green-900 text-xl font-black mb-3 tracking-tight">Project Management</h3>
-            <p className="text-royal-green-700 font-bold">Organize SDLC and MVP tasks with customizable boards.</p>
+            <h3 className="text-royal-green-900 dark:text-royal-green-400 text-xl font-black mb-3 tracking-tight">Project Management</h3>
+            <p className="text-royal-green-700 dark:text-royal-green-300 font-bold">Organize SDLC and MVP tasks with customizable boards.</p>
           </div>
 
-          <div className="bg-white border-2 border-royal-green-200 rounded-2xl p-8 hover:bg-royal-green-50 transition-all duration-300 hover:shadow-xl hover:border-royal-green-300 hover:-translate-y-1">
-            <div className="w-16 h-16 bg-royal-green-100 rounded-xl flex items-center justify-center mb-6 border-2 border-royal-green-200">
-              <Zap className="w-8 h-8 text-royal-green-700" />
+          <div className="bg-white dark:bg-slate-800 border-2 border-royal-green-200 dark:border-royal-green-700 rounded-2xl p-8 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30 transition-all duration-300 hover:shadow-xl hover:border-royal-green-300 dark:hover:border-royal-green-600 hover:-translate-y-1">
+            <div className="w-16 h-16 bg-royal-green-100 dark:bg-royal-green-900/50 rounded-xl flex items-center justify-center mb-6 border-2 border-royal-green-200 dark:border-royal-green-600">
+              <Zap className="w-8 h-8 text-royal-green-700 dark:text-royal-green-400" />
             </div>
-            <h3 className="text-royal-green-900 text-xl font-black mb-3 tracking-tight">Smart Reminders</h3>
-            <p className="text-royal-green-700 font-bold">Stay motivated with daily nudges and achievement tracking.</p>
+            <h3 className="text-royal-green-900 dark:text-royal-green-400 text-xl font-black mb-3 tracking-tight">Smart Reminders</h3>
+            <p className="text-royal-green-700 dark:text-royal-green-300 font-bold">Stay motivated with daily nudges and achievement tracking.</p>
           </div>
         </div>
       </div>

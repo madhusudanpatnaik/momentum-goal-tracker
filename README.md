@@ -1,8 +1,14 @@
+
 # Welcome to your Lovable project
 
 ## Project info
 
 **URL**: https://lovable.dev/projects/e97de573-2123-4dd6-bbd2-bf4c16ef9712
+
+## Connect with the Developer
+
+- **LinkedIn**: [Madhusudan Patnaik](https://www.linkedin.com/in/madhusudanpatnaik/)
+- **X (Twitter)**: [@madhusudan91263](https://x.com/madhusudan91263)
 
 ## How can I edit this code?
 

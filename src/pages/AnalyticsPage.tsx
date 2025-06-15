@@ -41,7 +41,7 @@ const AnalyticsPage = () => {
                 <div className="text-royal-green-600 dark:text-royal-green-400 text-sm font-medium">Completed</div>
               </div>
               <div className="text-2xl font-bold text-royal-green-800 dark:text-royal-green-200">
-                {goals.filter(goal => goal.progress >= 100).length}
+                {goals.filter(goal => (goal.currentAmount / goal.targetAmount * 100) >= 100).length}
               </div>
             </div>
             <div className="bg-gradient-to-r from-royal-green-50 to-royal-green-100 dark:from-royal-green-900/30 dark:to-royal-green-800/30 rounded-xl p-4 border border-royal-green-200/50 dark:border-royal-green-700/50">
@@ -50,7 +50,7 @@ const AnalyticsPage = () => {
                 <div className="text-royal-green-600 dark:text-royal-green-400 text-sm font-medium">Avg Progress</div>
               </div>
               <div className="text-2xl font-bold text-royal-green-800 dark:text-royal-green-200">
-                {goals.length > 0 ? Math.round(goals.reduce((sum, goal) => sum + goal.progress, 0) / goals.length) : 0}%
+                {goals.length > 0 ? Math.round(goals.reduce((sum, goal) => sum + (goal.currentAmount / goal.targetAmount * 100), 0) / goals.length) : 0}%
               </div>
             </div>
           </div>

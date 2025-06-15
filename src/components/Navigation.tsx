@@ -11,23 +11,23 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-50">
+    <nav className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-royal-green-200 dark:border-slate-700 sticky top-0 z-50 shadow-sm">
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-8">
-            <Link to="/" className="text-xl font-bold text-slate-900 dark:text-slate-100">
-              GoalUX
+            <Link to="/" className="text-2xl font-black text-royal-green-900 dark:text-royal-green-500 tracking-tight">
+              MOMENTUM
             </Link>
             
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               <Link to="/dashboard">
                 <Button
                   variant="ghost"
                   className={`${
                     isActive('/dashboard') 
-                      ? 'bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-100' 
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-                  }`}
+                      ? 'bg-royal-green-100 dark:bg-royal-green-900/50 text-royal-green-900 dark:text-royal-green-400 border border-royal-green-200' 
+                      : 'text-slate-600 dark:text-slate-400 hover:text-royal-green-700 dark:hover:text-royal-green-400 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30'
+                  } font-semibold transition-all duration-200`}
                 >
                   <Home className="w-4 h-4 mr-2" />
                   Dashboard
@@ -39,9 +39,9 @@ const Navigation = () => {
                   variant="ghost"
                   className={`${
                     isActive('/goals') 
-                      ? 'bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-100' 
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-                  }`}
+                      ? 'bg-royal-green-100 dark:bg-royal-green-900/50 text-royal-green-900 dark:text-royal-green-400 border border-royal-green-200' 
+                      : 'text-slate-600 dark:text-slate-400 hover:text-royal-green-700 dark:hover:text-royal-green-400 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30'
+                  } font-semibold transition-all duration-200`}
                 >
                   <Target className="w-4 h-4 mr-2" />
                   Goals
@@ -53,9 +53,9 @@ const Navigation = () => {
                   variant="ghost"
                   className={`${
                     isActive('/analytics') 
-                      ? 'bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-100' 
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-                  }`}
+                      ? 'bg-royal-green-100 dark:bg-royal-green-900/50 text-royal-green-900 dark:text-royal-green-400 border border-royal-green-200' 
+                      : 'text-slate-600 dark:text-slate-400 hover:text-royal-green-700 dark:hover:text-royal-green-400 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30'
+                  } font-semibold transition-all duration-200`}
                 >
                   <BarChart className="w-4 h-4 mr-2" />
                   Analytics
@@ -67,9 +67,9 @@ const Navigation = () => {
                   variant="ghost"
                   className={`${
                     isActive('/sdlc') 
-                      ? 'bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-100' 
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-                  }`}
+                      ? 'bg-royal-green-100 dark:bg-royal-green-900/50 text-royal-green-900 dark:text-royal-green-400 border border-royal-green-200' 
+                      : 'text-slate-600 dark:text-slate-400 hover:text-royal-green-700 dark:hover:text-royal-green-400 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30'
+                  } font-semibold transition-all duration-200`}
                 >
                   <Rocket className="w-4 h-4 mr-2" />
                   SDLC
@@ -81,9 +81,9 @@ const Navigation = () => {
                   variant="ghost"
                   className={`${
                     isActive('/calendar') 
-                      ? 'bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-100' 
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
-                  }`}
+                      ? 'bg-royal-green-100 dark:bg-royal-green-900/50 text-royal-green-900 dark:text-royal-green-400 border border-royal-green-200' 
+                      : 'text-slate-600 dark:text-slate-400 hover:text-royal-green-700 dark:hover:text-royal-green-400 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30'
+                  } font-semibold transition-all duration-200`}
                 >
                   <Calendar className="w-4 h-4 mr-2" />
                   Calendar

@@ -8,81 +8,94 @@
 @layer base {
   :root {
     --background: 248 250 252; /* Very light gray-blue instead of pure white */
-    --foreground: 30 41 59; /* Softer dark gray instead of pure black */
+    --foreground: 15 23 42; /* Darker slate for better contrast */
 
     --card: 255 255 255; /* Keep cards white for contrast */
-    --card-foreground: 30 41 59;
+    --card-foreground: 15 23 42;
 
     --popover: 255 255 255;
-    --popover-foreground: 30 41 59;
+    --popover-foreground: 15 23 42;
 
-    --primary: 21 101 72; /* Royal green */
+    --primary: 5 46 22; /* Deep royal green */
     --primary-foreground: 248 250 252;
 
     --secondary: 240 253 244; /* Very light green */
-    --secondary-foreground: 21 101 72;
+    --secondary-foreground: 5 46 22;
 
-    --muted: 241 245 249; /* Softer muted background */
+    --muted: 248 250 252; /* Softer muted background */
     --muted-foreground: 100 116 139;
 
-    --accent: 236 253 243; /* Light green accent */
-    --accent-foreground: 21 101 72;
+    --accent: 220 252 231; /* Light emerald accent */
+    --accent-foreground: 5 46 22;
 
     --destructive: 220 38 38; /* Softer red */
     --destructive-foreground: 248 250 252;
 
     --border: 226 232 240; /* Softer border */
     --input: 226 232 240;
-    --ring: 21 101 72; /* Royal green focus ring */
+    --ring: 5 46 22; /* Deep royal green focus ring */
 
     --radius: 0.5rem;
 
     --sidebar-background: 248 250 252; /* Match main background */
     --sidebar-foreground: 51 65 85;
-    --sidebar-primary: 21 101 72; /* Royal green */
+    --sidebar-primary: 5 46 22; /* Deep royal green */
     --sidebar-primary-foreground: 248 250 252;
     --sidebar-accent: 241 245 249;
-    --sidebar-accent-foreground: 21 101 72;
+    --sidebar-accent-foreground: 5 46 22;
     --sidebar-border: 226 232 240;
-    --sidebar-ring: 21 101 72;
+    --sidebar-ring: 5 46 22;
+
+    /* Royal green shades */
+    --royal-green-50: 240 253 244;
+    --royal-green-100: 220 252 231;
+    --royal-green-200: 187 247 208;
+    --royal-green-300: 134 239 172;
+    --royal-green-400: 74 222 128;
+    --royal-green-500: 34 197 94; /* Main royal green */
+    --royal-green-600: 22 163 74;
+    --royal-green-700: 21 128 61;
+    --royal-green-800: 22 101 52;
+    --royal-green-900: 5 46 22; /* Deep royal green */
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 2 6 23; /* Very dark navy */
+    --foreground: 248 250 252;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 15 23 42; /* Dark slate card */
+    --card-foreground: 248 250 252;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 15 23 42;
+    --popover-foreground: 248 250 252;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 34 197 94; /* Bright royal green for dark mode */
+    --primary-foreground: 2 6 23;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 22 101 52; /* Dark green */
+    --secondary-foreground: 248 250 252;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 30 41 59; /* Dark muted */
+    --muted-foreground: 148 163 184;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 22 101 52; /* Dark green accent */
+    --accent-foreground: 248 250 252;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 239 68 68; /* Brighter red for dark mode */
+    --destructive-foreground: 248 250 252;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 51 65 85; /* Dark border */
+    --input: 51 65 85;
+    --ring: 34 197 94; /* Bright royal green ring */
+
+    --sidebar-background: 15 23 42;
+    --sidebar-foreground: 226 232 240;
+    --sidebar-primary: 34 197 94;
+    --sidebar-primary-foreground: 2 6 23;
+    --sidebar-accent: 30 41 59;
+    --sidebar-accent-foreground: 226 232 240;
+    --sidebar-border: 51 65 85;
+    --sidebar-ring: 34 197 94;
   }
 }
 
@@ -93,5 +106,30 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  }
+}
+
+/* Royal Green Utilities */
+@layer utilities {
+  .bg-royal-green-50 { background-color: hsl(var(--royal-green-50)); }
+  .bg-royal-green-100 { background-color: hsl(var(--royal-green-100)); }
+  .bg-royal-green-500 { background-color: hsl(var(--royal-green-500)); }
+  .bg-royal-green-600 { background-color: hsl(var(--royal-green-600)); }
+  .bg-royal-green-700 { background-color: hsl(var(--royal-green-700)); }
+  .bg-royal-green-900 { background-color: hsl(var(--royal-green-900)); }
+  
+  .text-royal-green-50 { color: hsl(var(--royal-green-50)); }
+  .text-royal-green-500 { color: hsl(var(--royal-green-500)); }
+  .text-royal-green-600 { color: hsl(var(--royal-green-600)); }
+  .text-royal-green-700 { color: hsl(var(--royal-green-700)); }
+  .text-royal-green-900 { color: hsl(var(--royal-green-900)); }
+  
+  .border-royal-green-200 { border-color: hsl(var(--royal-green-200)); }
+  .border-royal-green-300 { border-color: hsl(var(--royal-green-300)); }
+  .border-royal-green-500 { border-color: hsl(var(--royal-green-500)); }
+  
+  .gradient-royal-green {
+    background: linear-gradient(135deg, hsl(var(--royal-green-500)), hsl(var(--royal-green-700)));
   }
 }

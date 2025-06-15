@@ -9,6 +9,28 @@ export const useSDLCRealtime = () => {
   const [lastUpdateTime, setLastUpdateTime] = useState(new Date());
   const [notifications, setNotifications] = useState<string[]>([]);
 
+  // Helper functions defined first
+  const getAssignedHours = (member: TeamMember, tasks: SDLCTask[]) => {
+    return tasks
+      .filter(task => task.assignee === member.name && task.status !== 'completed')
+      .reduce((sum, task) => sum + task.estimatedHours, 0);
+  };
+
+  const calculateTeamUtilization = useCallback((members: TeamMember[], tasks: SDLCTask[]) => {
+    return members.map(member => {
+      const assignedHours = getAssignedHours(member, tasks);
+      const utilization = (assignedHours / member.capacity) * 100;
+      return {
+        memberId: member.id,
+        memberName: member.name,
+        assignedHours,
+        capacity: member.capacity,
+        utilization: Math.round(utilization),
+        status: utilization > 100 ? 'overloaded' : utilization > 80 ? 'high' : 'normal'
+      };
+    });
+  }, []);
+
   // Real-time data synchronization
   useEffect(() => {
     if (!isRealTimeEnabled) return;
@@ -67,7 +89,7 @@ export const useSDLCRealtime = () => {
       ).length,
       teamUtilization: calculateTeamUtilization(sdlc.teamMembers, sdlc.tasks)
     };
-  }, [sdlc.projectMetrics, sdlc.tasks, sdlc.teamMembers, lastUpdateTime]);
+  }, [sdlc.projectMetrics, sdlc.tasks, sdlc.teamMembers, lastUpdateTime, calculateTeamUtilization]);
 
   // Enhanced project health with real-time risk assessment
   const realtimeProjectHealth = useMemo(() => {
@@ -114,27 +136,6 @@ export const useSDLCRealtime = () => {
       }
     };
   }, [sdlc.projectHealth, sdlc.tasks, sdlc.teamMembers, lastUpdateTime]);
-
-  const calculateTeamUtilization = useCallback((members: TeamMember[], tasks: SDLCTask[]) => {
-    return members.map(member => {
-      const assignedHours = getAssignedHours(member, tasks);
-      const utilization = (assignedHours / member.capacity) * 100;
-      return {
-        memberId: member.id,
-        memberName: member.name,
-        assignedHours,
-        capacity: member.capacity,
-        utilization: Math.round(utilization),
-        status: utilization > 100 ? 'overloaded' : utilization > 80 ? 'high' : 'normal'
-      };
-    });
-  }, []);
-
-  const getAssignedHours = (member: TeamMember, tasks: SDLCTask[]) => {
-    return tasks
-      .filter(task => task.assignee === member.name && task.status !== 'completed')
-      .reduce((sum, task) => sum + task.estimatedHours, 0);
-  };
 
   const clearNotifications = useCallback(() => {
     setNotifications([]);

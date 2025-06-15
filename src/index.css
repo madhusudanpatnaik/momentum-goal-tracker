@@ -110,26 +110,79 @@
   }
 }
 
-/* Royal Green Utilities */
+/* Royal Green Utilities - Complete set */
 @layer utilities {
-  .bg-royal-green-50 { background-color: hsl(var(--royal-green-50)); }
-  .bg-royal-green-100 { background-color: hsl(var(--royal-green-100)); }
-  .bg-royal-green-500 { background-color: hsl(var(--royal-green-500)); }
-  .bg-royal-green-600 { background-color: hsl(var(--royal-green-600)); }
-  .bg-royal-green-700 { background-color: hsl(var(--royal-green-700)); }
-  .bg-royal-green-900 { background-color: hsl(var(--royal-green-900)); }
+  /* Background colors */
+  .bg-royal-green-50 { background-color: rgb(240 253 244); }
+  .bg-royal-green-100 { background-color: rgb(220 252 231); }
+  .bg-royal-green-200 { background-color: rgb(187 247 208); }
+  .bg-royal-green-300 { background-color: rgb(134 239 172); }
+  .bg-royal-green-400 { background-color: rgb(74 222 128); }
+  .bg-royal-green-500 { background-color: rgb(34 197 94); }
+  .bg-royal-green-600 { background-color: rgb(22 163 74); }
+  .bg-royal-green-700 { background-color: rgb(21 128 61); }
+  .bg-royal-green-800 { background-color: rgb(22 101 52); }
+  .bg-royal-green-900 { background-color: rgb(5 46 22); }
   
-  .text-royal-green-50 { color: hsl(var(--royal-green-50)); }
-  .text-royal-green-500 { color: hsl(var(--royal-green-500)); }
-  .text-royal-green-600 { color: hsl(var(--royal-green-600)); }
-  .text-royal-green-700 { color: hsl(var(--royal-green-700)); }
-  .text-royal-green-900 { color: hsl(var(--royal-green-900)); }
+  /* Text colors */
+  .text-royal-green-50 { color: rgb(240 253 244); }
+  .text-royal-green-100 { color: rgb(220 252 231); }
+  .text-royal-green-200 { color: rgb(187 247 208); }
+  .text-royal-green-300 { color: rgb(134 239 172); }
+  .text-royal-green-400 { color: rgb(74 222 128); }
+  .text-royal-green-500 { color: rgb(34 197 94); }
+  .text-royal-green-600 { color: rgb(22 163 74); }
+  .text-royal-green-700 { color: rgb(21 128 61); }
+  .text-royal-green-800 { color: rgb(22 101 52); }
+  .text-royal-green-900 { color: rgb(5 46 22); }
   
-  .border-royal-green-200 { border-color: hsl(var(--royal-green-200)); }
-  .border-royal-green-300 { border-color: hsl(var(--royal-green-300)); }
-  .border-royal-green-500 { border-color: hsl(var(--royal-green-500)); }
+  /* Border colors */
+  .border-royal-green-50 { border-color: rgb(240 253 244); }
+  .border-royal-green-100 { border-color: rgb(220 252 231); }
+  .border-royal-green-200 { border-color: rgb(187 247 208); }
+  .border-royal-green-300 { border-color: rgb(134 239 172); }
+  .border-royal-green-400 { border-color: rgb(74 222 128); }
+  .border-royal-green-500 { border-color: rgb(34 197 94); }
+  .border-royal-green-600 { border-color: rgb(22 163 74); }
+  .border-royal-green-700 { border-color: rgb(21 128 61); }
+  .border-royal-green-800 { border-color: rgb(22 101 52); }
+  .border-royal-green-900 { border-color: rgb(5 46 22); }
   
+  /* Hover background colors */
+  .hover\:bg-royal-green-50:hover { background-color: rgb(240 253 244); }
+  .hover\:bg-royal-green-100:hover { background-color: rgb(220 252 231); }
+  .hover\:bg-royal-green-600:hover { background-color: rgb(22 163 74); }
+  .hover\:bg-royal-green-900\/30:hover { background-color: rgb(5 46 22 / 0.3); }
+  
+  /* Hover text colors */
+  .hover\:text-royal-green-400:hover { color: rgb(74 222 128); }
+  .hover\:text-royal-green-900:hover { color: rgb(5 46 22); }
+  
+  /* Hover border colors */
+  .hover\:border-royal-green-300:hover { border-color: rgb(134 239 172); }
+  .hover\:border-royal-green-400:hover { border-color: rgb(74 222 128); }
+  .hover\:border-royal-green-500:hover { border-color: rgb(34 197 94); }
+  .hover\:border-royal-green-600:hover { border-color: rgb(22 163 74); }
+  
+  /* Dark mode variants */
+  .dark .dark\:bg-royal-green-900\/50 { background-color: rgb(5 46 22 / 0.5); }
+  .dark .dark\:bg-royal-green-900\/30 { background-color: rgb(5 46 22 / 0.3); }
+  .dark .dark\:text-royal-green-300 { color: rgb(134 239 172); }
+  .dark .dark\:text-royal-green-400 { color: rgb(74 222 128); }
+  .dark .dark\:text-royal-green-500 { color: rgb(34 197 94); }
+  .dark .dark\:border-royal-green-600 { border-color: rgb(22 163 74); }
+  .dark .dark\:border-royal-green-700 { border-color: rgb(21 128 61); }
+  .dark .dark\:hover\:bg-royal-green-900\/30:hover { background-color: rgb(5 46 22 / 0.3); }
+  .dark .dark\:hover\:text-royal-green-400:hover { color: rgb(74 222 128); }
+  .dark .dark\:hover\:border-royal-green-500:hover { border-color: rgb(34 197 94); }
+  .dark .dark\:hover\:border-royal-green-600:hover { border-color: rgb(22 163 74); }
+  
+  /* Gradients */
   .gradient-royal-green {
-    background: linear-gradient(135deg, hsl(var(--royal-green-500)), hsl(var(--royal-green-700)));
+    background: linear-gradient(135deg, rgb(34 197 94), rgb(21 128 61));
+  }
+  
+  .dark .gradient-royal-green {
+    background: linear-gradient(135deg, rgb(34 197 94), rgb(22 163 74));
   }
 }

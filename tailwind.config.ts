@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,19 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Royal green color palette
+				'royal-green': {
+					50: 'rgb(240 253 244)',
+					100: 'rgb(220 252 231)',
+					200: 'rgb(187 247 208)',
+					300: 'rgb(134 239 172)',
+					400: 'rgb(74 222 128)',
+					500: 'rgb(34 197 94)',
+					600: 'rgb(22 163 74)',
+					700: 'rgb(21 128 61)',
+					800: 'rgb(22 101 52)',
+					900: 'rgb(5 46 22)'
 				}
 			},
 			borderRadius: {

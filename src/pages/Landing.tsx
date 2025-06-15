@@ -208,7 +208,7 @@ const Landing = () => {
             >
               <Twitter className="w-6 h-6 text-royal-green-400" />
               <span className="text-white font-medium">X (Twitter)</span>
-            </div>
+            </a>
           </div>
         </div>
       </div>

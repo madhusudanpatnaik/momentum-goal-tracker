@@ -11,11 +11,11 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-royal-green-200 dark:border-slate-700 sticky top-0 z-50 shadow-sm">
+    <nav className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-royal-green-200 dark:border-slate-700 sticky top-0 z-50 shadow-lg">
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-8">
-            <Link to="/" className="text-2xl font-black text-royal-green-900 dark:text-royal-green-500 tracking-tight">
+            <Link to="/" className="text-2xl font-black text-royal-green-900 dark:text-royal-green-400 tracking-tight hover:text-royal-green-700 dark:hover:text-royal-green-300 transition-colors">
               MOMENTUM
             </Link>
             
@@ -25,8 +25,8 @@ const Navigation = () => {
                   variant="ghost"
                   className={`${
                     isActive('/dashboard') 
-                      ? 'bg-royal-green-100 dark:bg-royal-green-900/50 text-royal-green-900 dark:text-royal-green-400 border border-royal-green-200' 
-                      : 'text-slate-600 dark:text-slate-400 hover:text-royal-green-700 dark:hover:text-royal-green-400 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30'
+                      ? 'bg-royal-green-100 dark:bg-royal-green-900/50 text-royal-green-900 dark:text-royal-green-300 border border-royal-green-300 dark:border-royal-green-600 shadow-sm' 
+                      : 'text-royal-green-600 dark:text-royal-green-400 hover:text-royal-green-800 dark:hover:text-royal-green-200 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30'
                   } font-semibold transition-all duration-200`}
                 >
                   <Home className="w-4 h-4 mr-2" />
@@ -39,8 +39,8 @@ const Navigation = () => {
                   variant="ghost"
                   className={`${
                     isActive('/goals') 
-                      ? 'bg-royal-green-100 dark:bg-royal-green-900/50 text-royal-green-900 dark:text-royal-green-400 border border-royal-green-200' 
-                      : 'text-slate-600 dark:text-slate-400 hover:text-royal-green-700 dark:hover:text-royal-green-400 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30'
+                      ? 'bg-royal-green-100 dark:bg-royal-green-900/50 text-royal-green-900 dark:text-royal-green-300 border border-royal-green-300 dark:border-royal-green-600 shadow-sm' 
+                      : 'text-royal-green-600 dark:text-royal-green-400 hover:text-royal-green-800 dark:hover:text-royal-green-200 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30'
                   } font-semibold transition-all duration-200`}
                 >
                   <Target className="w-4 h-4 mr-2" />
@@ -53,8 +53,8 @@ const Navigation = () => {
                   variant="ghost"
                   className={`${
                     isActive('/analytics') 
-                      ? 'bg-royal-green-100 dark:bg-royal-green-900/50 text-royal-green-900 dark:text-royal-green-400 border border-royal-green-200' 
-                      : 'text-slate-600 dark:text-slate-400 hover:text-royal-green-700 dark:hover:text-royal-green-400 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30'
+                      ? 'bg-royal-green-100 dark:bg-royal-green-900/50 text-royal-green-900 dark:text-royal-green-300 border border-royal-green-300 dark:border-royal-green-600 shadow-sm' 
+                      : 'text-royal-green-600 dark:text-royal-green-400 hover:text-royal-green-800 dark:hover:text-royal-green-200 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30'
                   } font-semibold transition-all duration-200`}
                 >
                   <BarChart className="w-4 h-4 mr-2" />
@@ -67,8 +67,8 @@ const Navigation = () => {
                   variant="ghost"
                   className={`${
                     isActive('/sdlc') 
-                      ? 'bg-royal-green-100 dark:bg-royal-green-900/50 text-royal-green-900 dark:text-royal-green-400 border border-royal-green-200' 
-                      : 'text-slate-600 dark:text-slate-400 hover:text-royal-green-700 dark:hover:text-royal-green-400 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30'
+                      ? 'bg-royal-green-100 dark:bg-royal-green-900/50 text-royal-green-900 dark:text-royal-green-300 border border-royal-green-300 dark:border-royal-green-600 shadow-sm' 
+                      : 'text-royal-green-600 dark:text-royal-green-400 hover:text-royal-green-800 dark:hover:text-royal-green-200 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30'
                   } font-semibold transition-all duration-200`}
                 >
                   <Rocket className="w-4 h-4 mr-2" />
@@ -81,8 +81,8 @@ const Navigation = () => {
                   variant="ghost"
                   className={`${
                     isActive('/calendar') 
-                      ? 'bg-royal-green-100 dark:bg-royal-green-900/50 text-royal-green-900 dark:text-royal-green-400 border border-royal-green-200' 
-                      : 'text-slate-600 dark:text-slate-400 hover:text-royal-green-700 dark:hover:text-royal-green-400 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30'
+                      ? 'bg-royal-green-100 dark:bg-royal-green-900/50 text-royal-green-900 dark:text-royal-green-300 border border-royal-green-300 dark:border-royal-green-600 shadow-sm' 
+                      : 'text-royal-green-600 dark:text-royal-green-400 hover:text-royal-green-800 dark:hover:text-royal-green-200 hover:bg-royal-green-50 dark:hover:bg-royal-green-900/30'
                   } font-semibold transition-all duration-200`}
                 >
                   <Calendar className="w-4 h-4 mr-2" />
